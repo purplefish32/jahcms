@@ -1,0 +1,53 @@
+{% extends 'ProbesysCmsBundle::admin.html.twig' %}
+
+{% block headline %}
+
+<h1>Setting list</h1>
+
+{% endblock headline %}
+
+{% block content_main %}
+    <div class="span10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Autoload</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('admin_setting_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.value }}</td>
+                    <td>{{ entity.autoload }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('admin_setting_show', { 'id': entity.id }) }}" class="btn">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_setting_edit', { 'id': entity.id }) }}" class="btn">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('admin_setting_new') }}" class="btn">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock content_main %}
+
+

@@ -1,0 +1,90 @@
+
+/*#464646 NAvbar*/
+body{
+    font-family: sans-serif;
+    background-color: #222222;
+    color: #D2D2D2;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 200;
+}
+
+a{
+    color: #7D7D7D;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #D2D2D2;
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: #1E1E1E;
+}
+
+.span2 ul{
+    margin: 0;
+    padding: 0;
+}
+
+.span2 li{
+    list-style: none;
+    padding: 0;
+    min-height: 29px;
+}
+
+.span2 a{
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px;
+    display: block;
+    font-weight: bold;
+    background-color: #1E1E1E;
+}
+
+.span2 a:hover{
+    border-top: 1px solid #575757;
+    border-bottom: 1px solid #262626;
+    background-color: #4A4A4A;
+    color: #D2D2D2;
+}
+
+.dasboard{
+    background-image: url('../images/menu.png');
+    /*background-position: -59px -1px;*/
+}
+
+.nav ul{
+    display: none;
+}
+
+.nav li:hover ul{
+    display: inline;
+}
+
+.nav ul li{
+    list-style: none;
+}
+
+.nav ul li a{
+    list-style: none;
+    display: block;
+    font-weight: bold;
+    padding: 10px 10px 10px 20px;
+    background-color: #1E1E1E;
+    width: 220px;
+}
+
+.nav ul li a:hover{
+    background-color: #4A4A4A;
+}
+
+.well{
+    background-color: #1E1E1E;
+}

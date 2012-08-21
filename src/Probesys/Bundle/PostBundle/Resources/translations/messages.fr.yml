@@ -1,0 +1,11 @@
+post:
+    entity: Article
+    entities: Articles
+    title: Titre
+    author: Auteur
+
+page:
+    entity: Page
+    entities: Pages
+    title: Titre
+    author: Auteur
