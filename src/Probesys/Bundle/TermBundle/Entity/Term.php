@@ -35,11 +35,10 @@ class Term
      */
     private $slug;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -49,19 +48,20 @@ class Term
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Term
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -71,19 +71,20 @@ class Term
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string $slug
      * @return Term
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
         return $this;
     }
 
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

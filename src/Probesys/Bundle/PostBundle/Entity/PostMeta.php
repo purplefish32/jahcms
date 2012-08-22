@@ -59,12 +59,13 @@ class PostMeta
     /**
      * Set metaKey
      *
-     * @param string $metaKey
+     * @param  string   $metaKey
      * @return PostMeta
      */
     public function setMetaKey($metaKey)
     {
         $this->metaKey = $metaKey;
+
         return $this;
     }
 
@@ -81,12 +82,13 @@ class PostMeta
     /**
      * Set metaValue
      *
-     * @param text $metaValue
+     * @param  text     $metaValue
      * @return PostMeta
      */
     public function setMetaValue($metaValue)
     {
         $this->metaValue = $metaValue;
+
         return $this;
     }
 
@@ -103,12 +105,13 @@ class PostMeta
     /**
      * Set post
      *
-     * @param Probesys\Bundle\PostBundle\Entity\Post $post
+     * @param  Probesys\Bundle\PostBundle\Entity\Post $post
      * @return PostMeta
      */
     public function setPost(\Probesys\Bundle\PostBundle\Entity\Post $post = null)
     {
         $this->post = $post;
+
         return $this;
     }
 

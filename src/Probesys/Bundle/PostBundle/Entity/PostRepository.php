@@ -12,10 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-	private $post_content;
+    private $post_content;
 
-	public function getPostContent()
-	{
-		return TRUE;
-	}
+    public function getPostContent()
+    {
+        return TRUE;
+    }
 }

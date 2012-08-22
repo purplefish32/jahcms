@@ -42,11 +42,10 @@ class Setting
      */
     private $autoload;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,19 +55,20 @@ class Setting
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string  $name
      * @return Setting
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -78,19 +78,20 @@ class Setting
     /**
      * Set value
      *
-     * @param text $value
+     * @param  text    $value
      * @return Setting
      */
     public function setValue($value)
     {
         $this->value = $value;
+
         return $this;
     }
 
     /**
      * Get value
      *
-     * @return text 
+     * @return text
      */
     public function getValue()
     {
@@ -100,19 +101,20 @@ class Setting
     /**
      * Set autoload
      *
-     * @param string $autoload
+     * @param  string  $autoload
      * @return Setting
      */
     public function setAutoload($autoload)
     {
         $this->autoload = $autoload;
+
         return $this;
     }
 
     /**
      * Get autoload
      *
-     * @return string 
+     * @return string
      */
     public function getAutoload()
     {

@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Probesys\Bundle\PostBundle\Entity\Post;
 use Probesys\Bundle\PostBundle\Form\PageType;
-use Probesys\Bundle\PostBundle\Repository;
 
 /**
  * Post controller.

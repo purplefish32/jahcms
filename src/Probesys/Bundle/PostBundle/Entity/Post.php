@@ -107,12 +107,13 @@ class Post
     /**
      * Set postTitle
      *
-     * @param text $postTitle
+     * @param  text $postTitle
      * @return Post
      */
     public function setPostTitle($postTitle)
     {
         $this->postTitle = $postTitle;
+
         return $this;
     }
 
@@ -129,12 +130,13 @@ class Post
     /**
      * Set postDate
      *
-     * @param datetime $postDate
+     * @param  datetime $postDate
      * @return Post
      */
     public function setPostDate($postDate)
     {
         $this->postDate = $postDate;
+
         return $this;
     }
 
@@ -151,12 +153,13 @@ class Post
     /**
      * Set postStatus
      *
-     * @param string $postStatus
+     * @param  string $postStatus
      * @return Post
      */
     public function setPostStatus($postStatus)
     {
         $this->postStatus = $postStatus;
+
         return $this;
     }
 
@@ -173,12 +176,13 @@ class Post
     /**
      * Set postModified
      *
-     * @param datetime $postModified
+     * @param  datetime $postModified
      * @return Post
      */
     public function setPostModified($postModified)
     {
         $this->postModified = $postModified;
+
         return $this;
     }
 
@@ -195,12 +199,13 @@ class Post
     /**
      * Set postType
      *
-     * @param string $postType
+     * @param  string $postType
      * @return Post
      */
     public function setPostType($postType)
     {
         $this->postType = $postType;
+
         return $this;
     }
 
@@ -217,12 +222,13 @@ class Post
     /**
      * Set postMimeType
      *
-     * @param string $postMimeType
+     * @param  string $postMimeType
      * @return Post
      */
     public function setPostMimeType($postMimeType)
     {
         $this->postMimeType = $postMimeType;
+
         return $this;
     }
 
@@ -239,12 +245,13 @@ class Post
     /**
      * Add postChildren
      *
-     * @param Probesys\Bundle\PostBundle\Entity\Post $postChildren
+     * @param  Probesys\Bundle\PostBundle\Entity\Post $postChildren
      * @return Post
      */
     public function addPostChildren(\Probesys\Bundle\PostBundle\Entity\Post $postChildren)
     {
         $this->postChildren[] = $postChildren;
+
         return $this;
     }
 
@@ -271,12 +278,13 @@ class Post
     /**
      * Set postParent
      *
-     * @param Probesys\Bundle\PostBundle\Entity\Post $postParent
+     * @param  Probesys\Bundle\PostBundle\Entity\Post $postParent
      * @return Post
      */
     public function setPostParent(\Probesys\Bundle\PostBundle\Entity\Post $postParent = null)
     {
         $this->postParent = $postParent;
+
         return $this;
     }
 
@@ -293,12 +301,13 @@ class Post
     /**
      * Add postMeta
      *
-     * @param Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta
+     * @param  Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta
      * @return Post
      */
     public function addPostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta)
     {
         $this->postMeta[] = $postMeta;
+
         return $this;
     }
 

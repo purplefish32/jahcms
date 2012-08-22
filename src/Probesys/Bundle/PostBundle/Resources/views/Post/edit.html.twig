@@ -13,12 +13,12 @@
             {{ form_row(edit_form.post_content) }}
         </div>
         <div class="span3">
+            <a href="#" class="btn btn-block">Preview</a>
+            <a href="#" class="btn btn-block">Save Draft</a>
+            <a href="{{ path('admin_post_delete', {id: entity.id}) }}" class="btn btn-danger btn-block">Trash</a>
+            <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
             <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
             <div id="publish" clas="collapse in">
-                <a href="#" class="btn btn-block">Preview</a>
-                <a href="#" class="btn btn-block">Save Draft</a>
-                <a href="{{ path('admin_post_delete', {id: entity.id}) }}" class="btn btn-danger btn-block">Trash</a>
-                <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
                 <div>
                     State : {{ entity.postStatus }}
                     {{ form_row(edit_form.post_status) }}

@@ -91,11 +91,10 @@ class Comment
      */
     private $parent;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -105,19 +104,20 @@ class Comment
     /**
      * Set author
      *
-     * @param string $author
+     * @param  string  $author
      * @return Comment
      */
     public function setAuthor($author)
     {
         $this->author = $author;
+
         return $this;
     }
 
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {
@@ -127,19 +127,20 @@ class Comment
     /**
      * Set authorEmail
      *
-     * @param string $authorEmail
+     * @param  string  $authorEmail
      * @return Comment
      */
     public function setAuthorEmail($authorEmail)
     {
         $this->authorEmail = $authorEmail;
+
         return $this;
     }
 
     /**
      * Get authorEmail
      *
-     * @return string 
+     * @return string
      */
     public function getAuthorEmail()
     {
@@ -149,19 +150,20 @@ class Comment
     /**
      * Set authorUrl
      *
-     * @param string $authorUrl
+     * @param  string  $authorUrl
      * @return Comment
      */
     public function setAuthorUrl($authorUrl)
     {
         $this->authorUrl = $authorUrl;
+
         return $this;
     }
 
     /**
      * Get authorUrl
      *
-     * @return string 
+     * @return string
      */
     public function getAuthorUrl()
     {
@@ -171,19 +173,20 @@ class Comment
     /**
      * Set authorIp
      *
-     * @param string $authorIp
+     * @param  string  $authorIp
      * @return Comment
      */
     public function setAuthorIp($authorIp)
     {
         $this->authorIp = $authorIp;
+
         return $this;
     }
 
     /**
      * Get authorIp
      *
-     * @return string 
+     * @return string
      */
     public function getAuthorIp()
     {
@@ -193,19 +196,20 @@ class Comment
     /**
      * Set date
      *
-     * @param datetime $date
+     * @param  datetime $date
      * @return Comment
      */
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getDate()
     {
@@ -215,19 +219,20 @@ class Comment
     /**
      * Set content
      *
-     * @param text $content
+     * @param  text    $content
      * @return Comment
      */
     public function setContent($content)
     {
         $this->content = $content;
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return text 
+     * @return text
      */
     public function getContent()
     {
@@ -237,19 +242,20 @@ class Comment
     /**
      * Set approved
      *
-     * @param string $approved
+     * @param  string  $approved
      * @return Comment
      */
     public function setApproved($approved)
     {
         $this->approved = $approved;
+
         return $this;
     }
 
     /**
      * Get approved
      *
-     * @return string 
+     * @return string
      */
     public function getApproved()
     {
@@ -259,19 +265,20 @@ class Comment
     /**
      * Set agent
      *
-     * @param string $agent
+     * @param  string  $agent
      * @return Comment
      */
     public function setAgent($agent)
     {
         $this->agent = $agent;
+
         return $this;
     }
 
     /**
      * Get agent
      *
-     * @return string 
+     * @return string
      */
     public function getAgent()
     {
@@ -281,19 +288,20 @@ class Comment
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string  $type
      * @return Comment
      */
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -303,19 +311,20 @@ class Comment
     /**
      * Set parent
      *
-     * @param bigint $parent
+     * @param  bigint  $parent
      * @return Comment
      */
     public function setParent($parent)
     {
         $this->parent = $parent;
+
         return $this;
     }
 
     /**
      * Get parent
      *
-     * @return bigint 
+     * @return bigint
      */
     public function getParent()
     {
