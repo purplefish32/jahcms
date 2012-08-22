@@ -4,35 +4,35 @@
 
 {% block content %}
 <form action="{{ path('admin_page_create') }}" method="post" {{ form_enctype(edit_form) }}>
-    <div class="span8">
-        {{ form_errors(edit_form) }}
+    <div class="row">
+        <div class="span7">
+            {{ form_errors(edit_form) }}
 
-        {{ form_row(edit_form.post_title) }}
+            {{ form_row(edit_form.post_title) }}
 
-        {{ form_row(edit_form.post_content) }}
-    </div>
-    <div class="span4">
-        <div class="well">
-            <div>
-                <a href="#" class="btn">Preview</a>
-                <a href="#" class="btn">Save Draft</a>
-                <a href="{{ path('admin_post_delete', {id: entity.id}) }}" class="btn btn-danger">Trash</a>
-                <button type="submit" class="btn btn-primary">{{ 'publish'|trans }}</button>
+            {{ form_row(edit_form.post_content) }}
+        </div>
+        <div class="span3">
+            <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
+            <div id="publish" clas="collapse in">
+                <a href="#" class="btn btn-block">Preview</a>
+                <a href="#" class="btn btn-block">Save Draft</a>
+                <a href="{{ path('admin_post_delete', {id: entity.id}) }}" class="btn btn-danger btn-block">Trash</a>
+                <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
                 <div>
                     State : {{ entity.postStatus }}
                     {{ form_row(edit_form.post_status) }}
                 </div>
                 {{ form_row(edit_form.post_date) }}
             </div>
-        </div>
-        <div class="well">
-            <h2>Page attributes</h2>
-            <div>
+
+            <h2 data-toggle="collapse" data-target="#page-attributes">Page attributes</h2>
+            <div id="page-attributes" clas="collapse in">
                 {{ form_row(edit_form.post_parent) }}
             </div>
-        </div>
 
-        {{ form_rest(edit_form) }}
+            {{ form_rest(edit_form) }}
+        </div>
     </div>
 </form>
 {% endblock content %}

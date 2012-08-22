@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Probesys\ValidateSchemaBundle\ProbesysValidateSchemaBundle(),
             new Probesys\JQueryBundle\ProbesysJQueryBundle(),
             new Probesys\Bundle\PostBundle\ProbesysPostBundle(),
             new Probesys\Bundle\CmsBundle\ProbesysCmsBundle(),

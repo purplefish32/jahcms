@@ -50,7 +50,7 @@
 
 {% block body %}
     {% block navbar %}
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
@@ -62,8 +62,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active">
-                <a href="#">+ New</a>
-                <ul>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
+                <ul class="dropdown-menu">
                     <li><a href="{{ path("admin_post_new") }}">Article</a></li>
                     <li><a href="{{ path("admin_page_new") }}">Page</a></li>
                 </ul>
@@ -79,15 +79,15 @@
     {% endblock navbar %}
 
     {% block container %}
-    <div class="{% block container_class %}container-fluid{% endblock container_class %}">
+    <div class="{% block container_class %}container{% endblock container_class %}">
         {% block header %}
         {% endblock header %}
 
         <div class="content">
             {% block content_row %}
-            <div class="row-fluid">
+            <div class="row">
                 <div class="span2">
-                    <ul>
+                    <ul class="">
                         <li><a href="{{ path("admin_post") }}">Posts</a></li>
                         <li><a href="{{ path("admin_page") }}">Pages</a></li>
                         <li><a href="{{ path("admin_comment") }}">Comments</a></li>
@@ -116,7 +116,7 @@
 
                     {% block flashes %}
                     {% if app.session.flashbag.peekAll|length > 0 %}
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="span12">
                         {{ session_flash() }}
                         </div>

@@ -60,31 +60,6 @@ a:hover{
     /*background-position: -59px -1px;*/
 }
 
-.nav ul{
-    display: none;
-}
-
-.nav li:hover ul{
-    display: inline;
-}
-
-.nav ul li{
-    list-style: none;
-}
-
-.nav ul li a{
-    list-style: none;
-    display: block;
-    font-weight: bold;
-    padding: 10px 10px 10px 20px;
-    background-color: #1E1E1E;
-    width: 220px;
-}
-
-.nav ul li a:hover{
-    background-color: #4A4A4A;
-}
-
 .well{
     background-color: #1E1E1E;
 }
