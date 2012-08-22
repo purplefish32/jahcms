@@ -298,36 +298,36 @@ class Post
         return $this->postParent;
     }
 
+
     /**
-     * Add postMeta
+     * Add postMetas
      *
-     * @param  Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta
+     * @param Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas
      * @return Post
      */
-    public function addPostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta)
+    public function addPostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas)
     {
-        $this->postMeta[] = $postMeta;
-
+        $this->postMetas[] = $postMetas;
         return $this;
     }
 
     /**
-     * Remove postMeta
+     * Remove postMetas
      *
-     * @param <variableType$postMeta
+     * @param Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas
      */
-    public function removePostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMeta)
+    public function removePostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas)
     {
-        $this->postMeta->removeElement($postMeta);
+        $this->postMetas->removeElement($postMetas);
     }
 
     /**
-     * Get postMeta
+     * Get postMetas
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return Doctrine\Common\Collections\Collection 
      */
-    public function getPostMeta()
+    public function getPostMetas()
     {
-        return $this->postMeta;
+        return $this->postMetas;
     }
 }

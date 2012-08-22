@@ -7,9 +7,7 @@
     <div class="row">
         <div class="span7">
             {{ form_errors(edit_form) }}
-
             {{ form_row(edit_form.post_title) }}
-
             {{ form_row(edit_form.post_content) }}
         </div>
         <div class="span3">
@@ -19,15 +17,10 @@
             <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
             <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
             <div id="publish" clas="collapse in">
-                <div>
-                    State : {{ entity.postStatus }}
-                    {{ form_row(edit_form.post_status) }}
-                </div>
+                State : {{ entity.postStatus }}
+                {{ form_row(edit_form.post_status) }}
                 {{ form_row(edit_form.post_date) }}
             </div>
-
-            {{ form_rest(edit_form) }}
-
             <h2 data-toggle="collapse" data-target="#categories">Categories</h2>
             <div id="categories" clas="collapse in">
                 All / Most used
@@ -36,6 +29,7 @@
             <div id="tags" clas="collapse in">
                 All / Most used
             </div>
+            {{ form_rest(edit_form) }}
         </div>
     </div>
 </form>

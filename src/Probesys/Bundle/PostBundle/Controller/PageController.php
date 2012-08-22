@@ -26,34 +26,41 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ProbesysPostBundle:Post')->findByPostType('page');
+        $posts = $em->getRepository('ProbesysPostBundle:Post')->findByPostType('page');
 
         return array(
-            'entities' => $entities,
+            'posts' => $posts,
         );
     }
 
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}/show", name="admin_page_show")
-     * @Template()
+     * @Route("/{id}/show", name="page_show")
+     * @Template("ProbesysPostBundle:Page:show.html.twig")
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+        //echo $post;
+
+        //print_r($post->getPostMetas());
+
+        foreach($post->getPostMetas() as $meta) {
+            $post->{$meta->getMetaKey()} = $meta->getMetaValue();
+            //echo $meta->getMetaKey();
+            //echo $meta->getMetaValue();
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        if (!$post) {
+            throw $this->createNotFoundException('Unable to find Post.');
+        }
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'post' => $post,
         );
     }
 
@@ -67,29 +74,29 @@ class PageController extends Controller
     {
         $now = new \Datetime();
 
-        $entity = new Post();
+        $post = new Post();
 
-        $entity
+        $post
             ->setPostTitle('auto-draft')
             ->setPostDate($now)
             ->setPostStatus('auto-draft')
             ->setPostModified($now)
-            ->setPostType('page');
+            ->setPostType('post');
 
         $em = $this->getDoctrine()->getManager();
 
-        $em->persist($entity);
+        $em->persist($post);
         $em->flush();
 
-        $entity
+        $post
             ->setPostTitle('');
 
         $editForm = $this->createForm(
-            new PageType(), $entity
+            new PageType(), $post
         );
 
         return array(
-            'entity'    => $entity,
+            'post'    => $post,
             'edit_form' => $editForm->createView(),
         );
     }
@@ -103,27 +110,27 @@ class PageController extends Controller
      */
     public function createAction()
     {
-        $entity  = new Post();
+        $post  = new Post();
 
         $request = $this->getRequest();
 
         $form = $this->createForm(
             new PageType(),
-            $entity
+            $post
         );
 
         $form->bindRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($post);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_page_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_page_show', array('id' => $post->getId())));
         }
 
         return array(
-            'entity' => $entity,
+            'post' => $post,
             'form'   => $form->createView(),
         );
     }
@@ -138,17 +145,17 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+        if (!$post) {
+            throw $this->createNotFoundException('Unable to find Post.');
         }
 
-        $editForm = $this->createForm(new PageType(), $entity);
+        $editForm = $this->createForm(new PageType(), $post);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'post'      => $post,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -165,15 +172,15 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+        if (!$post) {
+            throw $this->createNotFoundException('Unable to find Post.');
         }
 
         $editForm = $this->createForm(
             new PageType(),
-            $entity
+            $post
         );
 
         $deleteForm = $this->createDeleteForm($id);
@@ -183,14 +190,14 @@ class PageController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
+            $em->persist($post);
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_page', array('id' => $id)));
         }
 
         return array(
-            'entity'      => $entity,
+            'post'      => $post,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -206,13 +213,13 @@ class PageController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+        if (!$post) {
+            throw $this->createNotFoundException('Unable to find Post post.');
         }
 
-        $em->remove($entity);
+        $em->remove($post);
         $em->flush();
 
         return $this->redirect(

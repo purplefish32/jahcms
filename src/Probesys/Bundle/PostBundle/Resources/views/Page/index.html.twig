@@ -17,19 +17,19 @@ Page list <a href="{{ path('admin_page_new') }}" class="btn">New</a>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for page in pages %}
             <tr>
                 <td>
-                    <strong><a href="{{ path('admin_page_show', { 'id': entity.id }) }}">{{ entity.posttitle }}</a> ( {{ entity.poststatus }} )</strong>
+                    <strong><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.posttitle }}</a> ( {{ page.poststatus }} )</strong>
                     <div>
-                        <a href="{{ path('admin_page_edit', { 'id': entity.id }) }}">edit</a>
-                        <a href="{{ path('admin_page_delete', { 'id': entity.id }) }}">delete</a>
+                        <a href="{{ path('admin_page_edit', { 'id': page.id }) }}">edit</a>
+                        <a href="{{ path('admin_page_delete', { 'id': page.id }) }}">delete</a>
                     </div>
                 </td>
                 <td>Donovan</td>
                 <td>All</td>
                 <td>All</td>
-                <td>Last modified : {% if entity.postdate %}{{ entity.postmodified|date('d/m/Y') }}{% endif %}</td>
+                <td>Last modified : {% if page.postdate %}{{ page.postmodified|date('d/m/Y') }}{% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>
