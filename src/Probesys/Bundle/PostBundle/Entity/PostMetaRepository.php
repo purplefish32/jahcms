@@ -12,8 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostMetaRepository extends EntityRepository
 {
-    public function getMeta($key)
-    {
-
-    }
 }

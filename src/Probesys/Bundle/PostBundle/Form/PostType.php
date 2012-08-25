@@ -15,7 +15,7 @@ class PostType extends AbstractPostType
             ->add('post_type', 'hidden', array(
                 'data' => 'post',
             ))
-            ->add('post_content', 'textarea', array(
+            ->add('postContent', 'textarea', array(
                     "property_path" => false,
                     'attr' => array(
                         'class' => 'tinymce',

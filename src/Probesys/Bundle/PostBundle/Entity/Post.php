@@ -75,7 +75,7 @@ class Post
     private $postMimeType;
 
     /**
-     * @ORM\OneToMany(targetEntity="PostMeta", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="PostMeta", mappedBy="post", cascade={"persist"})
      * @ORM\JoinColumn(name="post_meta_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $postMetas;
@@ -324,7 +324,7 @@ class Post
     /**
      * Get postMetas
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getPostMetas()
     {

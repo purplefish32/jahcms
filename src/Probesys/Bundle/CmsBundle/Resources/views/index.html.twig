@@ -68,7 +68,7 @@
                 </ul>
               </li>
               <li class="">
-                <a href="./index.html">Edit</a>
+                <a href="{{ path("admin_page_edit", {id: post.id}) }}">Edit</a>
               </li>
             </ul>
           </div>
@@ -109,7 +109,7 @@
         </div>
         <footer>
             {% block footer %}
-                No stress CMS <small>version : v0</small>
+
             {% endblock footer %}
         </footer>
     </div> <!-- /container -->

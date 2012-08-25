@@ -12,10 +12,33 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-    private $post_content;
+    // public function setMeta($key, $value)
+    // {
+    //     return TRUE;
+    // }
+    //
 
-    public function getPostContent()
+    // public function getPostMeta()
+    // {
+    //     return "toto2";
+    // }
+    //
+    //
+
+    public function getPostMetaByMetaKey($metaKey)
     {
-        return TRUE;
+
+        // return $this->getEntityManager()
+        //     ->createQuery(
+        //         'SELECT m
+        //         FROM ProbesysPostBundle:PostMeta m
+        //         ASC'
+        //     )
+        //     ->getResult();
+
+
+        // $postMeta = "";
+
+        return $this->id;
     }
 }

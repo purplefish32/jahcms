@@ -9,27 +9,27 @@ Page list <a href="{{ path('admin_page_new') }}" class="btn">New</a>
     <table class="table">
         <thead>
             <tr>
-                <th>{{ 'page.title'|trans }}</th>
-                <th>{{ 'page.author'|trans }}</th>
+                <th>{{ 'post.title'|trans }}</th>
+                <th>{{ 'post.author'|trans }}</th>
                 <th>Catégory</th>
                 <th>Key words</th>
                 <th>Date</th>
             </tr>
         </thead>
         <tbody>
-        {% for page in pages %}
+        {% for post in posts %}
             <tr>
                 <td>
-                    <strong><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.posttitle }}</a> ( {{ page.poststatus }} )</strong>
+                    <strong><a href="{{ path('page_show', { 'id': post.id }) }}">{{ post.posttitle }}</a> ( {{ post.poststatus }} )</strong>
                     <div>
-                        <a href="{{ path('admin_page_edit', { 'id': page.id }) }}">edit</a>
-                        <a href="{{ path('admin_page_delete', { 'id': page.id }) }}">delete</a>
+                        <a href="{{ path('admin_page_edit', { 'id': post.id }) }}">edit</a>
+                        <a href="{{ path('admin_page_delete', { 'id': post.id }) }}">delete</a>
                     </div>
                 </td>
                 <td>Donovan</td>
                 <td>All</td>
                 <td>All</td>
-                <td>Last modified : {% if page.postdate %}{{ page.postmodified|date('d/m/Y') }}{% endif %}</td>
+                <td>Last modified : {% if post.postdate %}{{ post.postmodified|date('d/m/Y') }}{% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>

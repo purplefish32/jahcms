@@ -2,6 +2,10 @@
 
 {% block headline %}
     {{ post.postTitle }}
-    {{ post.content }}
-    {{ post.content }}
 {% endblock headline %}
+
+{% block content %}
+    {% if post.postContent %}
+        {{ post.postContent|raw }}
+    {% endif %}
+{% endblock content %}

@@ -3,21 +3,21 @@
 {% block headline %}Page edit{% endblock headline %}
 
 {% block content %}
-<form action="{{ path('admin_page_create') }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('admin_page_update', {id: post.id}) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="row">
         <div class="span7">
             {{ form_errors(edit_form) }}
             {{ form_row(edit_form.post_title) }}
-            {{ form_row(edit_form.post_content) }}
+            {{ form_row(edit_form.postContent) }}
         </div>
         <div class="span3">
-            <a href="#" class="btn btn-block">Preview</a>
+            <a href="{{ path('page_show', {id: post.id}) }}" class="btn btn-block">Preview</a>
             <a href="#" class="btn btn-block">Save Draft</a>
-            <a href="{{ path('admin_post_delete', {id: page.id}) }}" class="btn btn-danger btn-block">Trash</a>
+            <a href="{{ path('admin_post_delete', {id: post.id}) }}" class="btn btn-danger btn-block">Trash</a>
             <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
             <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
             <div id="publish" clas="collapse in">
-                State : {{ page.postStatus }}
+                State : {{ post.postStatus }}
                 {{ form_row(edit_form.post_status) }}
                 {{ form_row(edit_form.post_date) }}
             </div>
