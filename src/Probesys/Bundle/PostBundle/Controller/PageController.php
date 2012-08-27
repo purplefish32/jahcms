@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Probesys\Bundle\PostBundle\Entity\Post;
 use Probesys\Bundle\PostBundle\Entity\PostMeta;
 use Probesys\Bundle\PostBundle\Form\PageType;
-//use Probesys\Bundle\PostBundle\Entity\PostRepository;
 
 /**
  * Post controller.
@@ -30,8 +29,8 @@ class PageController extends Controller
 
         $posts = $em->getRepository('ProbesysPostBundle:Post')->findByPostType('page');
 
-        return array(
-            'posts' => $posts,
+        return compact(
+            'posts'
         );
     }
 
@@ -55,11 +54,6 @@ class PageController extends Controller
             throw $this->createNotFoundException('Unable to find Post.');
         }
 
-        // echo($post->getTitle());
-        // die();
-
-        // $post->postContent = $post->getPostMetaByMetaKey('postContent');
-
         return array(
             'post' => $post,
         );
@@ -78,9 +72,9 @@ class PageController extends Controller
         $post = new Post();
 
         $post
-            ->setPostTitle('auto-draft')
+            ->setpostTitle('auto-draft')
             ->setPostDate($now)
-            ->setPostStatus('auto-draft')
+            ->setpostStatus('auto-draft')
             ->setPostModified($now)
             ->setPostType('post');
 
@@ -90,14 +84,14 @@ class PageController extends Controller
         $em->flush();
 
         $post
-            ->setPostTitle('');
+            ->setpostTitle('');
 
         $editForm = $this->createForm(
             new PageType($post), $post
         );
 
         return array(
-            'post'    => $post,
+            'post'      => $post,
             'edit_form' => $editForm->createView(),
         );
     }
@@ -125,7 +119,7 @@ class PageController extends Controller
 
         return array(
             'post'      => $post,
-            'edit_form' => $editForm->createView(),
+            'edit_form' => $editForm->createView()
         );
     }
 
@@ -174,7 +168,14 @@ class PageController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_page', array('id' => $id)));
+            return $this->redirect(
+                $this->generateUrl(
+                    'admin_page',
+                    array(
+                        'id' => $id
+                    )
+                )
+            );
         }
 
         return array(
@@ -190,7 +191,6 @@ class PageController extends Controller
      */
     public function deleteAction($id)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);

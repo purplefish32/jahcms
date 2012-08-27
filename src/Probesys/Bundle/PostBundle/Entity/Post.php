@@ -85,7 +85,7 @@ class Post
      */
     public function __toString()
     {
-        return $this->getPostTitle();
+        return $this->getpostTitle();
     }
 
     public function __construct()
@@ -110,7 +110,7 @@ class Post
      * @param  text $postTitle
      * @return Post
      */
-    public function setPostTitle($postTitle)
+    public function setpostTitle($postTitle)
     {
         $this->postTitle = $postTitle;
 
@@ -122,7 +122,7 @@ class Post
      *
      * @return text
      */
-    public function getPostTitle()
+    public function getpostTitle()
     {
         return $this->postTitle;
     }
@@ -156,7 +156,7 @@ class Post
      * @param  string $postStatus
      * @return Post
      */
-    public function setPostStatus($postStatus)
+    public function setpostStatus($postStatus)
     {
         $this->postStatus = $postStatus;
 
@@ -168,7 +168,7 @@ class Post
      *
      * @return string
      */
-    public function getPostStatus()
+    public function getpostStatus()
     {
         return $this->postStatus;
     }

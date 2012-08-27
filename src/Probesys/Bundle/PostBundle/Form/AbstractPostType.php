@@ -11,19 +11,19 @@ class AbstractPostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('post_title', 'text', array(
+            ->add('postTitle', 'text', array(
                     'label' => 'post.title',
                 )
             )
-            ->add('post_date', 'datetime')
-            ->add('post_status', 'choice', array(
+            ->add('postDate', 'datetime')
+            ->add('postStatus', 'choice', array(
                 'choices' => array(
                     'draft',
                     'pending'
                 ),
                 'data' => 'publish'
             ))
-            ->add('post_mime_type', 'hidden')
+            ->add('postMimeType', 'hidden')
         ;
 
     }

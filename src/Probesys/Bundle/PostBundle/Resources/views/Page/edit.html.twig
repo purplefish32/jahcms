@@ -7,23 +7,23 @@
     <div class="row">
         <div class="span7">
             {{ form_errors(edit_form) }}
-            {{ form_row(edit_form.post_title) }}
+            {{ form_row(edit_form.postTitle) }}
             {{ form_row(edit_form.postContent) }}
         </div>
         <div class="span3">
+            <button type="submit" class="btn btn-block" name="save">Save Draft</button>
             <a href="{{ path('page_show', {id: post.id}) }}" class="btn btn-block">Preview</a>
-            <a href="#" class="btn btn-block">Save Draft</a>
             <a href="{{ path('admin_post_delete', {id: post.id}) }}" class="btn btn-danger btn-block">Trash</a>
-            <button type="submit" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
+            <button type="submit" class="btn btn-primary btn-block" name="publish">{{ 'publish'|trans }}</button>
             <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
             <div id="publish" clas="collapse in">
                 State : {{ post.postStatus }}
-                {{ form_row(edit_form.post_status) }}
-                {{ form_row(edit_form.post_date) }}
+                {{ form_row(edit_form.postStatus) }}
+                {{ form_row(edit_form.postDate) }}
             </div>
             <h2 data-toggle="collapse" data-target="#page-attributes">Page attributes</h2>
             <div id="page-attributes" clas="collapse in">
-                {{ form_row(edit_form.post_parent) }}
+                {{ form_row(edit_form.postParent) }}
             </div>
             {{ form_rest(edit_form) }}
         </div>

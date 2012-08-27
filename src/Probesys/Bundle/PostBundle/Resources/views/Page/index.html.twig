@@ -5,34 +5,50 @@ Page list <a href="{{ path('admin_page_new') }}" class="btn">New</a>
 {% endblock headline %}
 
 {% block content %}
-<div class="span10">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ 'post.title'|trans }}</th>
-                <th>{{ 'post.author'|trans }}</th>
-                <th>Catégory</th>
-                <th>Key words</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>
-                    <strong><a href="{{ path('page_show', { 'id': post.id }) }}">{{ post.posttitle }}</a> ( {{ post.poststatus }} )</strong>
-                    <div>
-                        <a href="{{ path('admin_page_edit', { 'id': post.id }) }}">edit</a>
-                        <a href="{{ path('admin_page_delete', { 'id': post.id }) }}">delete</a>
-                    </div>
-                </td>
-                <td>Donovan</td>
-                <td>All</td>
-                <td>All</td>
-                <td>Last modified : {% if post.postdate %}{{ post.postmodified|date('d/m/Y') }}{% endif %}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
+<div>
+    <a href="#">All (X)</a> | <a href="#">Published (X)</a> | <a href="#">Trash (X)</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th><a href="#">{{ 'post.title'|trans }}</a></th>
+            <th><a href="#">{{ 'post.author'|trans }}</a></th>
+            <th><a href="#">Date</a></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+        <tr>
+            <td>
+                <strong><a href="{{ path('page_show', { 'id': post.id }) }}">{{ post.postTitle }}</a></strong>
+                <div>
+                    <a href="{{ path('admin_page_edit', { 'id': post.id }) }}">edit</a>
+                    <a href="{{ path('admin_page_delete', { 'id': post.id }) }}">delete</a>
+                </div>
+            </td>
+            <td>Donovan</td>
+            <td>
+                {% if post.postDate %}
+                    {{ post.postDate|date('d/m/Y') }}
+                    <br />
+                    Published
+                {% elseif post.postModified %}
+                    {{ post.postModified|date('d/m/Y') }}
+                    <br />
+                    Last modified
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th><a href="#">{{ 'post.title'|trans }}</a></th>
+            <th><a href="#">{{ 'post.author'|trans }}</a></th>
+            <th><a href="#">Date</a></th>
+        </tr>
+    </tfoot>
+</table>
 
 {% endblock content %}

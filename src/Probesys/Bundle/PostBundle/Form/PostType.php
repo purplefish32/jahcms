@@ -7,20 +7,44 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PostType extends AbstractPostType
 {
+    private $post;
+
+    public function __construct(\Probesys\Bundle\PostBundle\Entity\Post $post = null)
+    {
+        $post->postContent = "";
+
+        $postMetas = $post->getPostMetas();
+
+        if($postMetas) {
+            foreach($postMetas as $postMeta) {
+                if($postMeta->getMetaKey() == 'postContent') {
+                    $post->postContent = $postMeta->getMetaValue();
+                }
+            }
+        }
+
+        $this->post = $post;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options );
 
         $builder
-            ->add('post_type', 'hidden', array(
-                'data' => 'post',
-            ))
+            ->add(
+                'postType',
+                'hidden',
+                array(
+                    'data' => 'post',
+                )
+            )
             ->add('postContent', 'textarea', array(
                     "property_path" => false,
                     'attr' => array(
                         'class' => 'tinymce',
-                        'data-theme' => 'simple' // simple, advanced, bbcode
-                    )
+                        'data-theme' => 'simple'
+                    ),
+                    'data' => $this->post->postContent
                 )
             )
         ;
