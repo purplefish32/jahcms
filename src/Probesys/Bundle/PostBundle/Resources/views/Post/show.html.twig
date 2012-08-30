@@ -1,0 +1,11 @@
+{% extends 'ProbesysCmsBundle::index.html.twig' %}
+
+{% block headline %}
+    {{ post.postTitle }}
+{% endblock headline %}
+
+{% block content %}
+    {% if post.postContent %}
+        {{ post.postContent|raw }}
+    {% endif %}
+{% endblock content %}

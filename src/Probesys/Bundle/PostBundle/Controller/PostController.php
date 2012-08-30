@@ -13,14 +13,14 @@ use Probesys\Bundle\PostBundle\Form\PostType;
 /**
  * Post controller.
  *
- * @Route("/admin/post")
+ * @Route()
  */
 class PostController extends Controller
 {
     /**
      * Lists all Post entities.
      *
-     * @Route("/", name="admin_post")
+     * @Route("/admin/post/", name="admin_post")
      * @Template()
      */
     public function indexAction()
@@ -35,10 +35,27 @@ class PostController extends Controller
     }
 
     /**
+     * Lists all posts in trash.
+     *
+     * @Route("/admin/post/trash/", name="admin_post_trash")
+     * @Template()
+     */
+    public function trashAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $posts = $em->getRepository('ProbesysPostBundle:Post')->findByPostTypeAndByPostStatus('page', 'trash');
+
+        return compact(
+            'posts'
+        );
+    }
+
+    /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}/show", name="page_show")
-     * @Template("ProbesysPostBundle:Page:show.html.twig")
+     * @Route("/{id}/show", name="post_show")
+     * @Template("ProbesysPostBundle:Post:show.html.twig")
      */
     public function showAction($id)
     {
@@ -46,12 +63,16 @@ class PostController extends Controller
 
         $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        foreach($post->getPostMetas() as $meta) {
-            $post->{$meta->getMetaKey()} = $meta->getMetaValue();
-        }
-
         if (!$post) {
             throw $this->createNotFoundException('Unable to find Post.');
+        }
+
+        if (!$post->getPostStatus() == 'publish') {
+            die("This post is not published");
+        }
+
+        foreach($post->getPostMetas() as $meta) {
+            $post->{$meta->getMetaKey()} = $meta->getMetaValue();
         }
 
         return array(
@@ -62,7 +83,7 @@ class PostController extends Controller
     /**
      * Displays a form to create a new Post entity.
      *
-     * @Route("/new", name="admin_post_new")
+     * @Route("/admin/post/new", name="admin_post_new")
      * @Template("ProbesysPostBundle:Post:edit.html.twig")
      */
     public function newAction()
@@ -99,7 +120,7 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
-     * @Route("/{id}/edit", name="admin_post_edit")
+     * @Route("/admin/post/{id}/edit", name="admin_post_edit")
      * @Template()
      */
     public function editAction($id)
@@ -126,7 +147,7 @@ class PostController extends Controller
     /**
      * Edits an existing Post entity.
      *
-     * @Route("/{id}/update", name="admin_post_update")
+     * @Route("/admin/post/{id}/update", name="admin_post_update")
      * @Method("post")
      * @Template("ProbesysPostBundle:Post:edit.html.twig")
      */
@@ -168,6 +189,8 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
+            $this->get('session')->setFlash('success', 'post.flash.update.success');
+
             return $this->redirect(
                 $this->generateUrl(
                     'admin_post',
@@ -179,15 +202,15 @@ class PostController extends Controller
         }
 
         return array(
-            'post'        => $post,
-            'edit_form'   => $editForm->createView(),
+            'post'      => $post,
+            'edit_form' => $editForm->createView(),
         );
     }
 
     /**
      * Deletes a Post entity.
      *
-     * @Route("/{id}/delete", name="admin_post_delete")
+     * @Route("/admin/post/{id}/delete", name="admin_post_delete")
      */
     public function deleteAction($id)
     {
@@ -201,6 +224,8 @@ class PostController extends Controller
 
         $em->remove($entity);
         $em->flush();
+
+        $this->get('session')->setFlash('success', 'post.flash.delete.success');
 
         return $this->redirect(
             $this->generateUrl('admin_post')

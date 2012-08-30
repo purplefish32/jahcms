@@ -12,33 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-    // public function setMeta($key, $value)
-    // {
-    //     return TRUE;
-    // }
-    //
-
-    // public function getPostMeta()
-    // {
-    //     return "toto2";
-    // }
-    //
-    //
-
-    public function getPostMetaByMetaKey($metaKey)
+    public function findByPostTypeAndByPostStatus($postType, $postStatus)
     {
-
-        // return $this->getEntityManager()
-        //     ->createQuery(
-        //         'SELECT m
-        //         FROM ProbesysPostBundle:PostMeta m
-        //         ASC'
-        //     )
-        //     ->getResult();
-
-
-        // $postMeta = "";
-
-        return $this->id;
+        //Do DQL query here
     }
 }

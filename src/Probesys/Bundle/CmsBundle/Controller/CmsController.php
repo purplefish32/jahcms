@@ -28,13 +28,4 @@ class CmsController extends Controller
     {
         return array();
     }
-
-    /**
-     * @Route("/{id}/show", name="show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        return array();
-    }
 }
