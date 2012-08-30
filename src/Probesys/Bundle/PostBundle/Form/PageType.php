@@ -15,9 +15,9 @@ class PageType extends AbstractPostType
 
         $postMetas = $post->getPostMetas();
 
-        if($postMetas) {
-            foreach($postMetas as $postMeta) {
-                if($postMeta->getMetaKey() == 'postContent') {
+        if ($postMetas) {
+            foreach ($postMetas as $postMeta) {
+                if ($postMeta->getMetaKey() == 'postContent') {
                     $post->postContent = $postMeta->getMetaValue();
                 }
             }

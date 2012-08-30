@@ -298,16 +298,16 @@ class Post
         return $this->postParent;
     }
 
-
     /**
      * Add postMetas
      *
-     * @param Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas
+     * @param  Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas
      * @return Post
      */
     public function addPostMeta(\Probesys\Bundle\PostBundle\Entity\PostMeta $postMetas)
     {
         $this->postMetas[] = $postMetas;
+
         return $this;
     }
 

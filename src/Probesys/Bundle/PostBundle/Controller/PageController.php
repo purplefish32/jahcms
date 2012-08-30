@@ -67,11 +67,11 @@ class PageController extends Controller
             die("This post is not published");
         }
 
-        foreach($post->getPostMetas() as $meta) {
+        foreach ($post->getPostMetas() as $meta) {
             $post->{$meta->getMetaKey()} = $meta->getMetaValue();
         }
 
-        foreach($post->getPostMetas() as $meta) {
+        foreach ($post->getPostMetas() as $meta) {
             $post->{$meta->getMetaKey()} = $meta->getMetaValue();
         }
 
@@ -175,7 +175,7 @@ class PageController extends Controller
 
             $postContent = $em->getRepository('ProbesysPostBundle:PostMeta')->findOneByPost($id);
 
-            if(!$postContent) {
+            if (!$postContent) {
                 $postContent = new PostMeta();
             }
 

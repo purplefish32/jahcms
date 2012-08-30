@@ -25,7 +25,6 @@ class Builder extends ContainerAware
         //     )
         // );
         // ... add more children
-
         return $menu;
     }
 }
