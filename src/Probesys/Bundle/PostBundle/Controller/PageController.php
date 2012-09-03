@@ -15,6 +15,7 @@ use Probesys\Bundle\PostBundle\Form\PageType;
  *
  * @Route()
  */
+
 class PageController extends Controller
 {
     /**
@@ -49,6 +50,7 @@ class PageController extends Controller
         return compact(
             'posts'
         );
+
     }
 
     /**
@@ -63,7 +65,7 @@ class PageController extends Controller
 
         $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-         if ($post->getPostStatus() != 'publish') {
+        if ($post->getPostStatus() != 'publish') {
             die("This post is not published");
         }
 
