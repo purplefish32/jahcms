@@ -36,7 +36,7 @@ Post list <a href="{{ path('admin_post_new') }}" class="btn">New</a>
         </tbody>
     </table>
 {% else %}
-    There are no posts, to create a new post, click on the "new" button.
+    <div class="alert alert-info">There are no posts, to create a new post, click on the "new" button.</div>
 {% endif %}
 
 {% endblock content %}
