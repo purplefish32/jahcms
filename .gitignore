@@ -6,10 +6,16 @@ vendor/*
 */logs/*
 */cache/*
 web/uploads/*
-
+web/css/*
+web/js/*
+web/img/*
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
 composer.phar
 composer.lock
 web/bundles
+
+#Capifony
+Capfile
+app/config/deploy.rb
