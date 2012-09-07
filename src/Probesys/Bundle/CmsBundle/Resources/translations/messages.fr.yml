@@ -1,0 +1,17 @@
+publish: Publier
+pending: En attente de relecture
+draft: Brouillon
+
+post:
+    flash:
+        update:
+            success: The post has been updated
+        delete:
+            success: The post has been deleted
+
+page:
+    flash:
+        update:
+            success: The page has been updated
+        delete:
+            success: The page has been deleted
