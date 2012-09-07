@@ -1,0 +1,29 @@
+ProbesysUserBundle:
+    resource: "@ProbesysUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ProbesysTermBundle:
+    resource: "@ProbesysTermBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ProbesysCommentBundle:
+    resource: "@ProbesysCommentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ProbesysCmsBundle:
+    resource: "@ProbesysCmsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ProbesysPostBundle:
+    resource: "@ProbesysPostBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
