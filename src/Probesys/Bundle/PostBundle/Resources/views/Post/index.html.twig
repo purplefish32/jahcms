@@ -5,38 +5,38 @@ Post list <a href="{{ path('admin_post_new') }}" class="btn">New</a>
 {% endblock headline %}
 
 {% block content %}
-<div class="span10">
-    {% if posts %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Catégory</th>
-                    <th>Key words</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for post in posts %}
-                <tr>
-                    <td>
-                        <strong><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.postTitle }}</a> ( {{ post.postStatus }} )</strong>
-                        <div>
-                            <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">edit</a>
-                            <a href="{{ path('admin_post_delete', { 'id': post.id }) }}">delete</a>
-                        </div>
-                    </td>
-                    <td>Donovan</td>
-                    <td>All</td>
-                    <td>All</td>
-                    <td>Last modified : {% if post.postdate %}{{ post.postmodified|date('d/m/Y') }}{% endif %}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        There are no posts, to create a new post, click on the "new" button.
-    {% endif %}
+
+{% if posts %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Catégory</th>
+                <th>Key words</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>
+                    <strong><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.postTitle }}</a> ( {{ post.postStatus }} )</strong>
+                    <div>
+                        <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">edit</a>
+                        <a href="{{ path('admin_post_delete', { 'id': post.id }) }}">delete</a>
+                    </div>
+                </td>
+                <td>Donovan</td>
+                <td>All</td>
+                <td>All</td>
+                <td>Last modified : {% if post.postdate %}{{ post.postmodified|date('d/m/Y') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info">There are no posts, to create a new post, click on the "new" button.</div>
+{% endif %}
 
 {% endblock content %}

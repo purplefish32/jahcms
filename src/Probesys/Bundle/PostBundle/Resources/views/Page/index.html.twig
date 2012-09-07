@@ -6,6 +6,8 @@ Page list <a href="{{ path('admin_page_new') }}" class="btn">New</a>
 
 {% block content %}
 
+{% if posts %}
+
 <div>
     <a href="#">All (X)</a> | <a href="#">Published (X)</a> | <a href="#">Trash (X)</a>
 </div>
@@ -50,5 +52,9 @@ Page list <a href="{{ path('admin_page_new') }}" class="btn">New</a>
         </tr>
     </tfoot>
 </table>
+
+{% else %}
+    <div class="alert alert-info">There are no pages, to create a new page, click on the "new" button.</div>
+{% endif %}
 
 {% endblock content %}
