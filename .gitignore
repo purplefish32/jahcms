@@ -5,7 +5,7 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-web/*
+web/uploads/*
 
 # Configuration files
 app/config/parameters.ini
