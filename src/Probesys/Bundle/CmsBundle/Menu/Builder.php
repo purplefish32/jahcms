@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 class Builder extends ContainerAware
 {
-    public function mainMenu(FactoryInterface $factory, array $options)
+    public function adminMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
 
@@ -25,6 +25,25 @@ class Builder extends ContainerAware
         //     )
         // );
         // ... add more children
+        return $menu;
+    }
+
+    public function mainMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild(
+            'Home', array('route' => 'admin_post')
+        );
+
+        $menu->addChild(
+            'About', array('route' => 'admin_page')
+        );
+
+        $menu->addChild(
+            'Contact', array('route' => 'admin_page')
+        );
+
         return $menu;
     }
 }

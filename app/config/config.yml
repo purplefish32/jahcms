@@ -132,3 +132,5 @@ mopa_bootstrap:
 
 probesys_j_query:
     enable: true
+
+ornicar_gravatar: ~

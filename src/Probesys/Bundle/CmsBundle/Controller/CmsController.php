@@ -10,9 +10,9 @@ class CmsController extends Controller
 {
     /**
      * @Route("/admin/", name="dashboard")
-     * @Route("/", name="admin_comment")
-     * @Route("/", name="admin_user")
-     * @Route("/", name="admin_tool")
+     * @Route("/admin/", name="admin_comment")
+     * @Route("/admin/", name="admin_user")
+     * @Route("/admin/", name="admin_tool")
      * @Template()
      */
     public function indexAction()

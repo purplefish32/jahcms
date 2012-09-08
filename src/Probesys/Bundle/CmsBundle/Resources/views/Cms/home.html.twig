@@ -1,1 +1,143 @@
-HOMEPAGE
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html>
+
+{% block html_tag %}
+<html>
+{% endblock html_tag %}
+
+{% block head %}
+<head>
+    <meta charset="UTF-8" />
+    {% block head_style %}
+    {# Override this block to add your own files! #}
+    {% stylesheets
+        '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+    {# To use this without less use the base_css.html.twig template as your base
+     # Be sure you understand whats going on: have a look into
+     # https://github.com/phiamo/MopaBootstrapBundle/blob/master/Resources/doc/css-vs-less.md
+     #}
+    {% endblock head_style %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head_script %}
+    {# Overwrite this block to add your own js here, to get them generated into final files #}
+    {% endblock head_script %}
+
+    <title>{% block title %}No stress CMS{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    {% block head_bottom %}
+    {% endblock head_bottom %}
+</head>
+{% endblock head %}
+
+{% block body_tag %}
+<body data-spy="scroll" data-offset="50">
+{% endblock body_tag %}
+
+{% block body_start %}
+{% endblock body_start %}
+
+{% block body %}
+    {% block navbar %}
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="{{ path("dashboard") }}" class="brand">JahCMS</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path("admin_post_new") }}">Article</a></li>
+                    <li><a href="{{ path("admin_page_new") }}">Page</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock navbar %}
+
+    {% block container %}
+    <div class="{% block container_class %}container{% endblock container_class %}">
+        {% block header %}
+        {% endblock header %}
+
+        <div class="content">
+            {% block content_row %}
+            <div class="row">
+                <div class="span12">
+                    {% block page_header %}
+                    <div class="page-header">
+                        <h1>{% block headline %}Welcome!{% endblock headline %}</h1>
+                    </div>
+                    {% endblock page_header %}
+
+                    {% block flashes %}
+                    {% if app.session.flashbag.peekAll|length > 0 %}
+                    <div class="row">
+                        <div class="span12">
+                        {{ session_flash() }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endblock flashes %}
+                    {{ knp_menu_render('ProbesysCmsBundle:Builder:mainMenu') }}
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+            {% endblock content_row %}
+        </div>
+        <footer>
+            {% block footer %}
+
+            {% endblock footer %}
+        </footer>
+    </div> <!-- /container -->
+    {% endblock container %}
+{% block foot_script %}
+    {# To only use a subset or add more js overwrite and copy paste this block
+    To speed up page loads save a copy of jQuery in your project and override this block to include the correct path
+    Otherwise the regeneration is done on every load in dev more with use_controller: true
+     #}
+    {% javascripts
+        '@ProbesysJQueryBundle/Resources/public/js/jquery-1.7.2.min.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{{ tinymce_init() }}
+{% endblock foot_script %}
+{% endblock body %}
+</body>
+</html>

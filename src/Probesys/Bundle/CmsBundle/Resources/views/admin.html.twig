@@ -62,16 +62,22 @@
           <a href="{{ path("dashboard") }}" class="brand">JahCMS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ path("admin_post_new") }}">Article</a></li>
-                    <li><a href="{{ path("admin_page_new") }}">Page</a></li>
-                </ul>
-              </li>
-              <li class="">
-                <a href="./index.html">Update</a>
-              </li>
+                <li>
+                    <a href="{{ path("home") }}">SITE NAME</a>
+                </li>
+                <li class="active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path("admin_post_new") }}">Article</a></li>
+                        <li><a href="{{ path("admin_page_new") }}">Page</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="./index.html">Update</a>
+                </li>
+            </ul>
+            <ul class="nav pull-right">
+                <li><a href="#">Hello Admin <img src="{{ gravatar('purplefish32@gmail.com', 20) }}" /></a></li>
             </ul>
           </div>
         </div>
@@ -88,7 +94,7 @@
             {% block content_row %}
             <div class="row">
                 <div class="span2">
-                    {{ knp_menu_render('ProbesysCmsBundle:Builder:mainMenu') }}
+                    {{ knp_menu_render('ProbesysCmsBundle:Builder:adminMenu') }}
                     <ul class="">
                         <li><a href="{{ path("admin_comment") }}">Comments</a></li>
                         <li><a href="{{ path("admin_user") }}">Users</a></li>
