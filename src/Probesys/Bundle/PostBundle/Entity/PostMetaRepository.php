@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostMetaRepository extends EntityRepository
 {
+    public function findByPostId($postId)
+    {
+        $dql = 'SELECT m
+                FROM ProbesysPostBundle:PostMeta: m
+                WHERE m.post = :postId
+                ';
+
+        $q = $this->_em->createQuery($dql);
+
+        $q->setParameter('post', $postId);
+
+        return $q->getResult();
+    }
 }
