@@ -19,9 +19,9 @@ class MenuItem implements NodeInterface
 
     // traits baby!
     // if your php version doesn't support traits, copy paste the methods of Knp\Component\Tree\MaterialzedPath\Node
-    use Node {
+    //use Node {
 
-    }
+    //}
 
     /**
      * @ORM\Id
