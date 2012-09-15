@@ -13,7 +13,10 @@ class SettingControllerTest extends WebTestCase
 
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/setting/');
-        /*$this->assertTrue(200 === $client->getResponse()->getStatusCode());
+        
+
+
+	$this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
@@ -47,6 +50,6 @@ class SettingControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());*/
+        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
 }
