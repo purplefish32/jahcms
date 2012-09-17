@@ -3,7 +3,7 @@
 {% block headline %}Post edit{% endblock headline %}
 
 {% block content %}
-<form action="{{ path('admin_post_update', {id: post.id}) }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('admin_post_update', {postId: post.id}) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="row">
         <div class="span7">
             {{ form_errors(edit_form) }}

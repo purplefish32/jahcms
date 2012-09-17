@@ -19,3 +19,4 @@ web/bundles
 #Capifony
 Capfile
 app/config/deploy.rb
+autotest_watchr.rb

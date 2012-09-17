@@ -59,19 +59,30 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="{{ path("dashboard") }}" class="brand">JahCMS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ path("admin_post_new") }}">Article</a></li>
-                    <li><a href="{{ path("admin_page_new") }}">Page</a></li>
-                </ul>
-              </li>
-              <li class="">
-                <a href="./index.html">Update</a>
-              </li>
+                <li>
+                    <a href="{{ path("dashboard") }}" class="brand">JahCMS</a>
+                </li>
+                <li>
+                    <a href="{{ path("home") }}">SITE NAME</a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ New</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path("admin_post_new") }}">Article</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("admin_page_new") }}">Page</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav pull-right">
+                <li><a href="#">Hello Admin <img src="{{ gravatar('purplefish32@gmail.com', 20) }}" /></a></li>
             </ul>
           </div>
         </div>
@@ -83,31 +94,48 @@
     <div class="{% block container_class %}container{% endblock container_class %}">
         {% block header %}
         {% endblock header %}
-
         <div class="content">
             {% block content_row %}
             <div class="row">
                 <div class="span2">
-                    {{ knp_menu_render('ProbesysCmsBundle:Builder:mainMenu') }}
+                    {{ knp_menu_render('ProbesysCmsBundle:Builder:adminMenu') }}
                     <ul class="">
-                        <li><a href="{{ path("admin_comment") }}">Comments</a></li>
-                        <li><a href="{{ path("admin_user") }}">Users</a></li>
-                        <li><a href="{{ path("admin_tool") }}">Tools</a></li>
+                        <li>
+                            <a href="{{ path("admin_comment") }}">Comments</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("admin_user") }}">Users</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("admin_tool") }}">Tools</a>
+                        </li>
                         <li>
                             <a href="{{ path("admin_setting") }}">Settings</a>
                             <ul>
-                                <li><a href="{{ path("admin_setting_general") }}">General</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Writing</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Reading</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Discussion</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Media</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Privacy</a></li>
-                                <li><a href="{{ path("admin_setting_general") }}">Permalinks</a></li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">General</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Writing</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Reading</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Discussion</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Media</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Privacy</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("admin_setting_general") }}">Permalinks</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
-
-
                 </div>
                 <div class="span10">
                     {% block page_header %}
@@ -126,6 +154,7 @@
                 </div>
             </div>
             {% endblock content_row %}
+
         </div>
         <footer>
             {% block footer %}
@@ -134,6 +163,7 @@
         </footer>
     </div> <!-- /container -->
     {% endblock container %}
+
 {% block foot_script %}
     {# To only use a subset or add more js overwrite and copy paste this block
     To speed up page loads save a copy of jQuery in your project and override this block to include the correct path

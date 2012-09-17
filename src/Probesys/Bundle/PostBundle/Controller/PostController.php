@@ -54,14 +54,14 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}/show", name="post_show")
+     * @Route("/{postId}/show", name="post_show")
      * @Template("ProbesysPostBundle:Post:show.html.twig")
      */
-    public function showAction($id)
+    public function showAction($postId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
 
         if (!$post) {
             throw $this->createNotFoundException('Unable to find Post.');
@@ -120,14 +120,14 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
-     * @Route("/admin/post/{id}/edit", name="admin_post_edit")
+     * @Route("/admin/post/{postId}/edit", name="admin_post_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($postId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
 
         if (!$post) {
             throw $this->createNotFoundException('Unable to find Post.');
@@ -147,21 +147,21 @@ class PostController extends Controller
     /**
      * Edits an existing Post entity.
      *
-     * @Route("/admin/post/{id}/update", name="admin_post_update")
+     * @Route("/admin/post/{postId}/update", name="admin_post_update")
      * @Method("post")
      * @Template("ProbesysPostBundle:Post:edit.html.twig")
      */
-    public function updateAction($id)
+    public function updateAction($postId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $post = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
 
         if (!$post) {
             throw $this->createNotFoundException('Unable to find Post post.');
         }
 
-        $editForm   = $this->createForm(
+        $editForm = $this->createForm(
             new PostType($post),
             $post
         );
@@ -173,18 +173,11 @@ class PostController extends Controller
         if ($editForm->isValid()) {
             $postData = $request->request->get('probesys_bundle_postbundle_posttype');
 
-            $postContent = $em->getRepository('ProbesysPostBundle:PostMeta')->findOneByPost($id);
+            $post->postContent = $postData['postContent'];
 
-            if (!$postContent) {
-                $postContent = new PostMeta();
+            if (isset($postData['postAuthor'])) {
+                $post->postAuthor = $postData['postAuthor'];
             }
-
-            $postContent
-                ->setPost($post)
-                ->setMetaKey('postContent')
-                ->setMetaValue($postData['postContent']);
-
-            $post->addPostMeta($postContent);
 
             $em->persist($post);
             $em->flush();
@@ -195,7 +188,7 @@ class PostController extends Controller
                 $this->generateUrl(
                     'admin_post',
                     array(
-                        'id' => $id
+                        'id' => $postId
                     )
                 )
             );
@@ -210,13 +203,13 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
-     * @Route("/admin/post/{id}/delete", name="admin_post_delete")
+     * @Route("/admin/post/{postId}/delete", name="admin_post_delete")
      */
-    public function deleteAction($id)
+    public function deleteAction($postId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($id);
+        $entity = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post');
