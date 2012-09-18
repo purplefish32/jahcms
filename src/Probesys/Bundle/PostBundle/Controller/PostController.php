@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Probesys\Bundle\PostBundle\Entity\Post;
-use Probesys\Bundle\PostBundle\Entity\PostMeta;
 use Probesys\Bundle\PostBundle\Form\PostType;
 
 /**
@@ -171,9 +170,13 @@ class PostController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-            $postData = $request->request->get('probesys_bundle_postbundle_posttype');
+            $postData = $request->request->all();
 
             $post->postContent = $postData['postContent'];
+
+            if (isset($postData['action'])) {
+                $post->setPostStatus($postData['action']);
+            }
 
             if (isset($postData['postAuthor'])) {
                 $post->postAuthor = $postData['postAuthor'];

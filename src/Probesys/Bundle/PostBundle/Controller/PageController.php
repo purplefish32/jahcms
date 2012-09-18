@@ -131,7 +131,7 @@ class PageController extends Controller
 
         $post = $em->getRepository('ProbesysPostBundle:Post')->find($id);
 
-        if (!$post) {
+        if (!$post){
             throw $this->createNotFoundException('Unable to find Post.');
         }
 
