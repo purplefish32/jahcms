@@ -15,20 +15,10 @@ class CmsControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/admin/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
-        /*$crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'setting[field_name]'  => 'Test',
-            // ... other fields to fill
-        ));
+        $this->assertTrue($crawler->filter('h1:contains("Dashboard")')->count() > 0);
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check data in the show view
-        $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
-
+        /*
         // Edit the entity
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 

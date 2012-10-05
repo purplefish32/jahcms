@@ -4,7 +4,7 @@ namespace Probesys\Bundle\PostBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PostControllerTest extends WebTestCase
+class PageControllerTest extends WebTestCase
 {
     public function testCompleteScenario()
     {
@@ -12,28 +12,29 @@ class PostControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin/post/');
+        $crawler = $client->request('GET', '/admin/page/');
 
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
 
-        $link = $crawler->filter('#post_new')->link();
+        $link = $crawler->filter('#page_new')->link();
 
         $crawler = $client->click($link);
 
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('post_submit_action_publish')->form(array(
-            'probesys_bundle_postbundle_posttype[postTitle]'   => 'Test',
-            'probesys_bundle_postbundle_posttype[postContent]' => 'Test',
-            // ... other fields to fill
+        $form = $crawler->selectButton('page_submit_action_publish')->form(array(
+            'probesys_bundle_postbundle_pagetype[postTitle]'   => 'Test',
+            'probesys_bundle_postbundle_pagetype[postContent]' => 'Test',
         ));
 
         $client->submit($form);
 
         $crawler = $client->followRedirect();
 
-        // // Check data in the show view
+        //var_dump($client->getResponse()->getContent());
+
+        // // // Check data in the show view
         // $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
         // // Edit the entity

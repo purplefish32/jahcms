@@ -13,8 +13,8 @@
         <div class="span3">
             <a href="#" class="btn btn-block">Preview</a>
             <a href="#" class="btn btn-block">Save Draft</a>
-            <button type="submit" name="action" value="trash" class="btn btn-danger btn-block">{{ 'trash'|trans }}</button>
-            <button type="submit" name="action" value="publish" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
+            <button id="post_submit_action_trash" type="submit" name="action" value="trash" class="btn btn-danger btn-block">{{ 'trash'|trans }}</button>
+            <button id="post_submit_action_publish" type="submit" name="action" value="publish" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
             <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
             <div id="publish" clas="collapse in">
                 State : {{ post.postStatus }}

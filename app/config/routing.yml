@@ -1,3 +1,13 @@
+probesys_api:
+    resource: "@ProbesysApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+probesys_sami:
+    resource: "@ProbesysSamiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 ProbesysUserBundle:
     resource: "@ProbesysUserBundle/Controller/"
     type:     annotation

@@ -1,4 +1,38 @@
 <?php
+/**
+ * MIT License
+ * ===========
+ *
+ * Copyright (c) 2012 Donovan Tengblad <contact@donovan-tengblad.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @category   Controller
+ * @package    JahCMS
+ * @subpackage PostBundle
+ * @author     Donovan Tengblad <contact@donovan-tengblad.com>
+ * @copyright  2012 Donovan Tengblad.
+ * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @version    0.1
+ * @link       http://donovan-tengblad.com
+ */
 
 namespace Probesys\Bundle\PostBundle\Controller;
 
@@ -12,6 +46,15 @@ use Probesys\Bundle\PostBundle\Form\PostType;
 /**
  * Post controller.
  *
+ * @category   Controller
+ * @package    JahCMS
+ * @subpackage PostBundle
+ * @author     Donovan Tengblad <contact@donovan-tengblad.com>
+ * @copyright  2012 Donovan Tengblad.
+ * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @version    0.1
+ * @link       http://donovan-tengblad.com
+ *
  * @Route()
  */
 class PostController extends Controller
@@ -19,7 +62,9 @@ class PostController extends Controller
     /**
      * Lists all Post entities.
      *
-     * @Route("/admin/post/", name="admin_post")
+     * @return array Response
+     *
+     * @Route("/admin/posts/", name="admin_post")
      * @Template()
      */
     public function indexAction()
@@ -35,6 +80,8 @@ class PostController extends Controller
 
     /**
      * Lists all posts in trash.
+     *
+     * @return array Response
      *
      * @Route("/admin/post/trash/", name="admin_post_trash")
      * @Template()
@@ -52,6 +99,10 @@ class PostController extends Controller
 
     /**
      * Finds and displays a Post entity.
+     *
+     * @param int $postId Post ID
+     *
+     * @return array Response
      *
      * @Route("/{postId}/show", name="post_show")
      * @Template("ProbesysPostBundle:Post:show.html.twig")
@@ -81,6 +132,8 @@ class PostController extends Controller
 
     /**
      * Displays a form to create a new Post entity.
+     *
+     * @return array Response
      *
      * @Route("/admin/post/new", name="admin_post_new")
      * @Template("ProbesysPostBundle:Post:edit.html.twig")
@@ -119,6 +172,10 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
+     * @param int $postId Post ID
+     *
+     * @return array Response
+     *
      * @Route("/admin/post/{postId}/edit", name="admin_post_edit")
      * @Template()
      */
@@ -146,6 +203,10 @@ class PostController extends Controller
     /**
      * Edits an existing Post entity.
      *
+     * @param int $postId Post ID
+     *
+     * @return array Response
+     *
      * @Route("/admin/post/{postId}/update", name="admin_post_update")
      * @Method("post")
      * @Template("ProbesysPostBundle:Post:edit.html.twig")
@@ -172,8 +233,6 @@ class PostController extends Controller
         if ($editForm->isValid()) {
             $postData = $request->request->all();
 
-            $post->postContent = $postData['postContent'];
-
             if (isset($postData['action'])) {
                 $post->setPostStatus($postData['action']);
             }
@@ -181,6 +240,22 @@ class PostController extends Controller
             if (isset($postData['postAuthor'])) {
                 $post->postAuthor = $postData['postAuthor'];
             }
+
+            if ($postData['probesys_bundle_postbundle_posttype']['postContent']) {
+                $em
+                    ->getRepository('ProbesysPostBundle:PostMeta')
+                    ->findOneByPostIdAndByMetaKey($postId, 'postContent');
+
+                $postContent = $em;
+            }
+
+            $postContent
+                ->setPost($post)
+                ->setMetaKey('postContent')
+                ->setMetaValue($postData['postContent']);
+
+            $post->addPostMeta($postContent);
+
 
             $em->persist($post);
             $em->flush();
@@ -205,6 +280,10 @@ class PostController extends Controller
 
     /**
      * Deletes a Post entity.
+     *
+     * @param int $postId Post ID
+     *
+     * @return array Response
      *
      * @Route("/admin/post/{postId}/delete", name="admin_post_delete")
      */
