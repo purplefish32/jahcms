@@ -213,9 +213,13 @@ class PostController extends Controller
      */
     public function updateAction($postId)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this
+            ->getDoctrine()
+            ->getManager();
 
-        $post = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
+        $post = $em
+            ->getRepository('ProbesysPostBundle:Post')
+            ->find($postId);
 
         if (!$post) {
             throw $this->createNotFoundException('Unable to find Post post.');
@@ -231,7 +235,10 @@ class PostController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-            $postData = $request->request->all();
+
+            $postData = $request
+                ->request
+                ->all();
 
             if (isset($postData['action'])) {
                 $post->setPostStatus($postData['action']);
@@ -255,7 +262,6 @@ class PostController extends Controller
                 ->setMetaValue($postData['postContent']);
 
             $post->addPostMeta($postContent);
-
 
             $em->persist($post);
             $em->flush();

@@ -255,9 +255,19 @@ class PageController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+            // $postData = $request
+            //     ->request
+            //     ->get('probesys_bundle_postbundle_pagetype');
             $postData = $request
                 ->request
-                ->get('probesys_bundle_postbundle_pagetype');
+                ->all();
+
+            if ($request->get('action') == 'publish') {
+                die ("here");
+            }
+
+            var_dump($postData);
+            die( "not here" );
 
             $postContent = $em
                 ->getRepository('ProbesysPostBundle:PostMeta')
