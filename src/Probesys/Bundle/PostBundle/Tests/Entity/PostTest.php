@@ -11,12 +11,14 @@ class PostTest extends \PHPUnit_Framework_TestCase
         $post->setPostTitle("My post");
         $post->setPostType("post");
         $post->setPostDate("2012-10-15 08:12:47");
+        $post->setPostModified("2012-10-15 08:12:47");
         $post->setPostStatus("published");
 
         $this->assertEquals($post->getPostTitle(), "My post");
         $this->assertEquals($post, "My post");
         $this->assertEquals($post->getPostType(), "post");
         $this->assertEquals($post->getPostDate(), "2012-10-15 08:12:47");
+        $this->assertEquals($post->getPostModified(), "2012-10-15 08:12:47");
         $this->assertEquals($post->getPostStatus(), "published");
     }
 }
