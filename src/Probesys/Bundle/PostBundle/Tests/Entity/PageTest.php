@@ -12,6 +12,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $post->setPostType("page");
 
         $this->assertEquals($post->getPostTitle(), "My Page");
+        $this->assertEquals($post, "My Page");
         $this->assertEquals($post->getPostType(), "page");
     }
 }
