@@ -44,6 +44,6 @@ if ($returnCode !== 0) {
     exit(1);
 }
 
-echo '>> All tests for ' . $projectName . ' passed.' . PHP_EOL;
+echo '>> All tests for ' . $projectName . ' passed and code coverage written to app/doc/cc' . PHP_EOL;
 echo PHP_EOL;
 exit(0);
