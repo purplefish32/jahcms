@@ -22,7 +22,7 @@ $projectName = basename(getcwd());
 
 // execute unit tests (it is assumed that a phpunit.xml configuration is present
 // in the root of the project)
-exec('phpunit -c app/ --coverage-text', $output, $returnCode); // cwd is assumed here
+exec('phpunit -c app/ --coverage-html app/doc/cc', $output, $returnCode); // cwd is assumed here
 
 // if the build failed, output a summary and fail
 if ($returnCode !== 0) {
