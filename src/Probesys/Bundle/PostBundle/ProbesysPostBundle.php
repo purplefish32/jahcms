@@ -37,6 +37,18 @@ namespace Probesys\Bundle\PostBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Post Bundle
+ *
+ * @category  Bundle
+ * @package   JahCMS
+ * @author    Donovan Tengblad <contact@donovan-tengblad.com>
+ * @copyright 2012 Donovan Tengblad.
+ * @license   http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @version   0.1
+ * @link      http://donovan-tengblad.com
+ * @extends   Bundle
+ */
 class ProbesysPostBundle extends Bundle
 {
 }
