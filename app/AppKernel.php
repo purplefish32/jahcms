@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new Probesys\Bundle\CmsBundle\ProbesysCmsBundle(),
             new Probesys\Bundle\CommentBundle\ProbesysCommentBundle(),
             new Probesys\Bundle\TermBundle\ProbesysTermBundle(),
-            new Probesys\Bundle\UserBundle\ProbesysUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),

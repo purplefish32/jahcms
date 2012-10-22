@@ -3,11 +3,6 @@ probesys_api:
     type:     annotation
     prefix:   /
 
-ProbesysUserBundle:
-    resource: "@ProbesysUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 ProbesysTermBundle:
     resource: "@ProbesysTermBundle/Controller/"
     type:     annotation
