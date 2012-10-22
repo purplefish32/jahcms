@@ -33,7 +33,6 @@
  * @version    0.1
  * @link       http://donovan-tengblad.com
  */
-
 namespace Probesys\Bundle\CmsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

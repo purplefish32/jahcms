@@ -33,7 +33,6 @@
  * @version    0.1
  * @link       http://donovan-tengblad.com
  */
-
 namespace Probesys\Bundle\PostBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

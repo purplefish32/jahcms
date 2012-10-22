@@ -24,7 +24,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * @category   Repository
+ * @category   Entity
  * @package    JahCMS
  * @subpackage PostBundle
  * @author     Donovan Tengblad <contact@donovan.tengblad.com>
@@ -33,7 +33,6 @@
  * @version    0.1
  * @link       http://donovan-tengblad.com
  */
-
 namespace Probesys\Bundle\PostBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;

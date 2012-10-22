@@ -26,6 +26,7 @@
  *
  * @category   DependancyInjection
  * @package    JahCMS
+ * @subpackage ApiBundle
  * @author     Donovan Tengblad <contact@donovan-tengblad.com>
  * @copyright  2012 Donovan Tengblad.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
