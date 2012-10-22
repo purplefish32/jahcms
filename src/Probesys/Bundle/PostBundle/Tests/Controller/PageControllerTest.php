@@ -16,11 +16,11 @@ class PageControllerTest extends WebTestCase
 
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
 
-        // $link = $crawler->filter('#page_new')->link();
+        $link = $crawler->filter('#page_new')->link();
 
-        // $crawler = $client->click($link);
+        $crawler = $client->click($link);
 
-        // $this->assertTrue(200 === $client->getResponse()->getStatusCode());
+        $this->assertTrue(200 === $client->getResponse()->getStatusCode());
 
         // // Fill in the form and submit it
         // $form = $crawler->selectButton('page_submit_action_publish')->form(array(
