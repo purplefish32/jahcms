@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdocumentor>
   <parser>
-      <default-package-name>phpDocumentor</default-package-name>
+      <default-package-name>JahCMS</default-package-name>
       <target>app/doc/</target>
   </parser>
   <transformer>
