@@ -16,4 +16,5 @@
  *  Execute phpdoc
  */
 exec('phpdoc');
+echo "PHPDocumentor2 documentation generated in app/doc/"
 exit(0);
