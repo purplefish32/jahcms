@@ -45,6 +45,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     * Find posts by post type and by post status
+     *
+     * @param string $postType   Post type
+     * @param string $postStatus Post status
+     */
     public function findByPostTypeAndByPostStatus($postType, $postStatus)
     {
         //Do DQL query here

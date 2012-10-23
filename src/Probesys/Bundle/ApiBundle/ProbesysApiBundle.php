@@ -37,6 +37,9 @@ namespace Probesys\Bundle\ApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * API bundle
+ */
 class ProbesysApiBundle extends Bundle
 {
 }

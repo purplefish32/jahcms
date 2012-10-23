@@ -49,6 +49,8 @@ class ProbesysPostExtension extends Extension
 {
     /**
      * {@inheritDoc}
+     * @param array            $configs   Configurations
+     * @param ContainerBuilder $container Container
      */
     public function load(array $configs, ContainerBuilder $container)
     {

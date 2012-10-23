@@ -37,6 +37,9 @@ namespace Probesys\Bundle\CmsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * CMS bundle
+ */
 class ProbesysCmsBundle extends Bundle
 {
 }

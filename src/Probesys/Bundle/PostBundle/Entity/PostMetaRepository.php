@@ -52,7 +52,7 @@ use Doctrine\ORM\EntityRepository;
 class PostMetaRepository extends EntityRepository
 {
     /**
-     * Find one PostMeta by postId and by metaKey
+     * Find one by post id and by meta key
      *
      * @param int $postId  Post ID
      * @param int $metaKey Meta Key

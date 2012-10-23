@@ -49,6 +49,9 @@ class ProbesysCommentExtension extends Extension
 {
     /**
      * {@inheritDoc}
+     *
+     * @param array            $configs   Configs
+     * @param ContainerBuilder $container Container
      */
     public function load(array $configs, ContainerBuilder $container)
     {

@@ -81,6 +81,8 @@ class SettingController extends Controller
     /**
      * Finds and displays a Setting entity.
      *
+     * @param string $id ID
+     *
      * @Route("/{id}/show", name="admin_setting_show")
      * @Template()
      */
@@ -150,6 +152,8 @@ class SettingController extends Controller
     /**
      * Displays a form to edit an existing Setting entity.
      *
+     * @param string $id ID
+     *
      * @Route("/{id}/edit", name="admin_setting_edit")
      * @Template()
      */
@@ -175,6 +179,8 @@ class SettingController extends Controller
 
     /**
      * Edits an existing Setting entity.
+     *
+     * @param string $id ID
      *
      * @Route("/{id}/update", name="admin_setting_update")
      * @Method("post")
@@ -214,6 +220,8 @@ class SettingController extends Controller
     /**
      * Deletes a Setting entity.
      *
+     * @param string $id ID
+     *
      * @Route("/{id}/delete", name="admin_setting_delete")
      * @Method("post")
      */
@@ -239,6 +247,13 @@ class SettingController extends Controller
         return $this->redirect($this->generateUrl('admin_setting'));
     }
 
+    /**
+     * Creates delete form
+     *
+     * @param string $id ID
+     *
+     * @return form
+     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

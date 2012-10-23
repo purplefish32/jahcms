@@ -37,10 +37,23 @@ namespace Probesys\Bundle\PostBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * PostType
+ */
 class PostType extends AbstractPostType
 {
+    /**
+     * Post
+     *
+     * @var post
+     */
     private $post;
 
+    /**
+     * Constructor
+     *
+     * @param \Probesys\Bundle\PostBundle\Entity\Post $post Post
+     */
     public function __construct(\Probesys\Bundle\PostBundle\Entity\Post $post = null)
     {
         $post->postContent = "";
@@ -58,6 +71,12 @@ class PostType extends AbstractPostType
         $this->post = $post;
     }
 
+    /**
+     * Form builder
+     *
+     * @param FormBuilderInterface $builder Builder
+     * @param array                $options Options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options );
@@ -83,6 +102,11 @@ class PostType extends AbstractPostType
 
     }
 
+    /**
+     * Set Default Options
+     *
+     * @param OptionsResolverInterface $resolver Resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -90,6 +114,11 @@ class PostType extends AbstractPostType
         ));
     }
 
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
     public function getName()
     {
         return 'probesys_bundle_postbundle_posttype';

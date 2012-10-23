@@ -46,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Post
 {
     /**
-     * @var integer $id
+     * @var integer $id ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -55,59 +55,65 @@ class Post
     private $id;
 
     /**
-     * @var text $postTitle
+     * @var text $postTitle Post title
      *
      * @ORM\Column(name="post_title", type="text")
      */
     private $postTitle;
 
     /**
-     * @var datetime $postDate
+     * @var datetime $postDate Post date
      *
      * @ORM\Column(name="post_date", type="datetime")
      */
     private $postDate;
 
     /**
-     * @var string $postStatus
+     * @var string $postStatus Post date
      *
      * @ORM\Column(name="post_status", type="string", length=20)
      */
     private $postStatus;
 
     /**
-     * @var datetime $postModified
+     * @var datetime $postModified Post modified
      *
      * @ORM\Column(name="post_modified", type="datetime")
      */
     private $postModified;
 
     /**
+     * @var Post $postChildren Post children
+     *
      * @ORM\OneToMany(targetEntity="Post", mappedBy="postParent")
      */
     private $postChildren;
 
     /**
+     * @var Post $postParent Post parent
+     *
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="postChildren")
      * @ORM\JoinColumn(name="post_parent", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $postParent;
 
     /**
-     * @var string $postType
+     * @var string $postType Post type
      *
      * @ORM\Column(name="post_type", type="string", length=20)
      */
     private $postType;
 
     /**
-     * @var string $postMimeType
+     * @var string $postMimeType Post MIME type
      *
      * @ORM\Column(name="post_mime_type", type="string", length=100, nullable=true)
      */
     private $postMimeType;
 
     /**
+     * @var PostMeta postMetas Post metas
+     *
      * @ORM\OneToMany(targetEntity="PostMeta", mappedBy="post", cascade={"persist"})
      * @ORM\JoinColumn(name="post_meta_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
@@ -121,6 +127,9 @@ class Post
         return $this->getpostTitle();
     }
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->post_children = new \Doctrine\Common\Collections\ArrayCollection();

@@ -39,8 +39,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * General settings form
+ */
 class SettingGeneralType extends AbstractType
 {
+    /**
+     * Build form
+     *
+     * @param FormBuilderInterface $builder Builder
+     * @param array                $options Options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -53,6 +62,11 @@ class SettingGeneralType extends AbstractType
         ;
     }
 
+    /**
+     * Sets default options
+     *
+     * @param OptionsResolverInterface $resolver Resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -60,6 +74,11 @@ class SettingGeneralType extends AbstractType
         ));
     }
 
+    /**
+     * Get name
+     *
+     * @return string Name
+     */
     public function getName()
     {
         return 'probesys_bundle_cmsbundle_settinggeneraltype';

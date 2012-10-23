@@ -37,6 +37,9 @@ namespace Probesys\Bundle\CommentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Comment bundle
+ */
 class ProbesysCommentBundle extends Bundle
 {
 }

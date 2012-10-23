@@ -46,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment
 {
     /**
-     * @var integer $id
+     * @var integer $id ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -55,70 +55,70 @@ class Comment
     private $id;
 
     /**
-     * @var string $author
+     * @var string $author Author
      *
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
 
     /**
-     * @var string $authorEmail
+     * @var string $authorEmail Author email
      *
      * @ORM\Column(name="authorEmail", type="string", length=100)
      */
     private $authorEmail;
 
     /**
-     * @var string $authorUrl
+     * @var string $authorUrl Author URL
      *
      * @ORM\Column(name="authorUrl", type="string", length=200)
      */
     private $authorUrl;
 
     /**
-     * @var string $authorIp
+     * @var string $authorIp Author IP
      *
      * @ORM\Column(name="authorIp", type="string", length=100)
      */
     private $authorIp;
 
     /**
-     * @var datetime $date
+     * @var datetime $date Date
      *
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
     /**
-     * @var text $content
+     * @var text $content Content
      *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
-     * @var string $approved
+     * @var string $approved Approved
      *
      * @ORM\Column(name="approved", type="string", length=20)
      */
     private $approved;
 
     /**
-     * @var string $agent
+     * @var string $agent Agent
      *
      * @ORM\Column(name="agent", type="string", length=255)
      */
     private $agent;
 
     /**
-     * @var string $type
+     * @var string $type Type
      *
      * @ORM\Column(name="type", type="string", length=20)
      */
     private $type;
 
     /**
-     * @var bigint $parent
+     * @var bigint $parent Parent
      *
      * @ORM\Column(name="parent", type="bigint")
      */

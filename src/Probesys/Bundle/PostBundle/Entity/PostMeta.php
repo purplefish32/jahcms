@@ -46,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
 class PostMeta
 {
     /**
-     * @var integer $id
+     * @var integer $id ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -55,25 +55,31 @@ class PostMeta
     private $id;
 
     /**
+     * @var Probesys\Bundle\PostBundle\Entity\Post $post Post
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="postMetas")
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $post;
 
     /**
-     * @var string $metaKey
+     * @var string $metaKey Meta key
      *
      * @ORM\Column(name="meta_key", type="string", length=255)
      */
     private $metaKey;
 
     /**
-     * @var text $metaValue
+     * @var text $metaValue Meta value
      *
      * @ORM\Column(name="meta_value", type="text")
      */
     private $metaValue;
 
+    /**
+     * Post meta key
+     *
+     * @return string Meta Key
+     */
     public function __toString()
     {
         return $this->getMetaKey();

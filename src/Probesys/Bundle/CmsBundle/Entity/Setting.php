@@ -46,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Setting
 {
     /**
-     * @var integer $id
+     * @var integer $id ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -55,21 +55,21 @@ class Setting
     private $id;
 
     /**
-     * @var string $name
+     * @var string $name Name
      *
      * @ORM\Column(name="name", type="string", length=64)
      */
     private $name;
 
     /**
-     * @var text $value
+     * @var text $value Value
      *
      * @ORM\Column(name="value", type="text")
      */
     private $value;
 
     /**
-     * @var string $autoload
+     * @var string $autoload Autoload
      *
      * @ORM\Column(name="autoload", type="string", length=20)
      */

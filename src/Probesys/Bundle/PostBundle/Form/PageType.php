@@ -37,10 +37,23 @@ namespace Probesys\Bundle\PostBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * PageType
+ */
 class PageType extends AbstractPostType
 {
+    /**
+     * Post
+     *
+     * @var Post
+     */
     private $post;
 
+    /**
+     * Constructor
+     *
+     * @param \Probesys\Bundle\PostBundle\Entity\Post $post Post
+     */
     public function __construct(\Probesys\Bundle\PostBundle\Entity\Post $post = null)
     {
         $post->postContent = "";
@@ -58,6 +71,12 @@ class PageType extends AbstractPostType
         $this->post = $post;
     }
 
+    /**
+     * Form Builder
+     *
+     * @param FormBuilderInterface $builder Builder
+     * @param array                $options Options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options );
@@ -91,6 +110,11 @@ class PageType extends AbstractPostType
 
     }
 
+    /**
+     * Sets default options
+     *
+     * @param OptionsResolverInterface $resolver Resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(
@@ -100,6 +124,11 @@ class PageType extends AbstractPostType
         );
     }
 
+    /**
+     * Gets name
+     *
+     * @return string Name
+     */
     public function getName()
     {
         return 'probesys_bundle_postbundle_pagetype';
