@@ -26,9 +26,6 @@
         "knplabs/knp-menu-bundle":          "dev-master",
         "avalanche123/imagine-bundle":      "dev-master",
         "ornicar/gravatar-bundle":          "dev-master",
-        "liip/theme-bundle":                "dev-master",
-	      "sami/sami":			                  "dev-master",
-        "friendsofsymfony/rest-bundle":     "dev-master",
         "jms/serializer-bundle":            "0.9.0"
     },
     "repositories":
