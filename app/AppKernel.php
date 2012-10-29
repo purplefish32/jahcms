@@ -29,7 +29,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Probesys\Bundle\ApiBundle\ProbesysApiBundle(),
         );
