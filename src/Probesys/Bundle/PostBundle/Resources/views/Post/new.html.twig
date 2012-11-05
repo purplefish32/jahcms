@@ -1,0 +1,36 @@
+{% extends 'ProbesysCmsBundle::admin.html.twig' %}
+
+{% block headline %}Post edit{% endblock headline %}
+
+{% block content %}
+<form action="{{ path('admin_post_create') }}" method="post" {{ form_enctype(edit_form) }}>
+    <div class="row">
+        <div class="span7">
+            {{ form_errors(edit_form) }}
+            {{ form_row(edit_form.postTitle) }}
+            {{ form_row(edit_form.postContent) }}
+        </div>
+        <div class="span3">
+            <a href="#" class="btn btn-block">Preview</a>
+            <a href="#" class="btn btn-block">Save Draft</a>
+            <button id="post_submit_action_trash" type="submit" name="action" value="trash" class="btn btn-danger btn-block">{{ 'trash'|trans }}</button>
+            <button id="post_submit_action_publish" type="submit" name="action" value="publish" class="btn btn-primary btn-block">{{ 'publish'|trans }}</button>
+            <h2 data-toggle="collapse" data-target="#publish">Publish</h2>
+            <div id="publish" clas="collapse in">
+                State : {{ post.postStatus }}
+                {{ form_row(edit_form.postStatus) }}
+                {{ form_row(edit_form.postDate) }}
+            </div>
+            <h2 data-toggle="collapse" data-target="#categories">Categories</h2>
+            <div id="categories" clas="collapse in">
+                All / Most used
+            </div>
+            <h2 data-toggle="collapse" data-target="#tags">Tags</h2>
+            <div id="tags" clas="collapse in">
+                All / Most used
+            </div>
+            {{ form_rest(edit_form) }}
+        </div>
+    </div>
+</form>
+{% endblock content %}

@@ -56,19 +56,19 @@ class PostType extends AbstractPostType
      */
     public function __construct(\Probesys\Bundle\PostBundle\Entity\Post $post = null)
     {
-        $post->postContent = "";
+        if ($post) {
+            $postMetas = $post->getPostMetas();
 
-        $postMetas = $post->getPostMetas();
-
-        if ($postMetas) {
-            foreach ($postMetas as $postMeta) {
-                if ($postMeta->getMetaKey() == 'postContent') {
-                    $post->postContent = $postMeta->getMetaValue();
+            if ($postMetas) {
+                foreach ($postMetas as $postMeta) {
+                    if ($postMeta->getMetaKey() == 'postContent') {
+                        $post->postContent = $postMeta->getMetaValue();
+                    }
                 }
             }
-        }
 
-        $this->post = $post;
+            $this->post = $post;
+        }
     }
 
     /**
@@ -94,8 +94,7 @@ class PostType extends AbstractPostType
                     'attr' => array(
                         'class' => 'tinymce',
                         'data-theme' => 'simple'
-                    ),
-                    'data' => $this->post->postContent
+                    )
                 )
             )
         ;

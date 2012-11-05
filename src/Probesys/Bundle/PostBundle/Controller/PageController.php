@@ -158,21 +158,7 @@ class PageController extends Controller
         $post = new Post();
 
         $post
-            ->setpostTitle('auto-draft')
-            ->setPostDate($now)
-            ->setpostStatus('auto-draft')
-            ->setPostModified($now)
             ->setPostType('page');
-
-        $em = $this
-            ->getDoctrine()
-            ->getManager();
-
-        $em->persist($post);
-        $em->flush();
-
-        $post
-            ->setpostTitle('');
 
         $editForm = $this->createForm(
             new PageType($post), $post

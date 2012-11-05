@@ -135,36 +135,58 @@ class PostController extends Controller
      * @return array Response
      *
      * @Route("/admin/post/new", name="admin_post_new")
-     * @Template("ProbesysPostBundle:Post:edit.html.twig")
+     * @Template("ProbesysPostBundle:Post:new.html.twig")
      */
     public function newAction()
     {
-        $now = new \Datetime();
-
         $post = new Post();
 
         $post
-            ->setpostTitle('auto-draft')
-            ->setPostDate($now)
-            ->setpostStatus('auto-draft')
-            ->setPostModified($now)
             ->setPostType('post');
 
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($post);
-        $em->flush();
-
-        $post
-            ->setpostTitle('');
-
-        $editForm = $this->createForm(
-            new PostType($post), $post
-        );
+        $form = $this->createForm(new PostType(), $post);
 
         return array(
             'post'      => $post,
-            'edit_form' => $editForm->createView(),
+            'edit_form' => $form->createView(),
+        );
+    }
+
+      /**
+     * Creates a new Crew entity.
+     *
+     * @Route("/admin/post/create", name="admin_post_create")
+     * @Method("post")
+     * @Template("ProbesysPostBundle:Post:new.html.twig")
+     */
+    public function createAction()
+    {
+        $post    = new Post();
+        $request = $this->getRequest();
+        $form    = $this->createForm(new PostType(), $post);
+        $form->bindRequest($request);
+
+        if ($form->isValid()) {
+
+            $now = new \Datetime();
+
+            $post->setPostModified($now);
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($post);
+            $em->flush();
+
+            $this->get('session')->setFlash('success',"Post created");
+
+            return $this->redirect($this->generateUrl('admin_post'));
+
+        }
+
+        $this->get('session')->setFlash('error',"Post not created");
+
+        return array(
+            'post' => $post,
+            'form'   => $form->createView()
         );
     }
 
