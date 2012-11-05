@@ -155,6 +155,8 @@ class PostController extends Controller
       /**
      * Creates a new Crew entity.
      *
+     * @return array Response
+     *
      * @Route("/admin/post/create", name="admin_post_create")
      * @Method("post")
      * @Template("ProbesysPostBundle:Post:new.html.twig")
@@ -176,17 +178,17 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            $this->get('session')->setFlash('success',"Post created");
+            $this->get('session')->setFlash('success', "Post created");
 
             return $this->redirect($this->generateUrl('admin_post'));
 
         }
 
-        $this->get('session')->setFlash('error',"Post not created");
+        $this->get('session')->setFlash('error', "Post not created");
 
         return array(
             'post' => $post,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 
