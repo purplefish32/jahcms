@@ -59,8 +59,17 @@ class PostMetaRepository extends EntityRepository
      *
      * @return bool
      */
-    public function findOneByPostIdAndByMetaKey(int $postId, int $metaKey)
+    public function findOneByPostIdAndByMetaKey($postId, $metaKey)
     {
-        return false;
+        $qb = $this->_em->createQueryBuilder('pm');
+        $qb
+            ->select('pm')
+            ->from('Probesys\Bundle\PostBundle\Entity\PostMeta', 'pm')
+            ->where('pm.post = :post')
+            ->andWhere('pm.metaKey = :metaKey')
+            ->setParameter('post', $postId)
+            ->setParameter('metaKey', $metaKey);
+
+        return $qb->getQuery()->getSingleResult();
     }
 }

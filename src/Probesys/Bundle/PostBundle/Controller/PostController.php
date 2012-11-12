@@ -40,6 +40,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Probesys\Bundle\PostBundle\Entity\Post;
+use Probesys\Bundle\PostBundle\Entity\PostMeta;
 use Probesys\Bundle\PostBundle\Form\PostType;
 
 /**
@@ -108,7 +109,9 @@ class PostController extends Controller
      */
     public function showAction($postId)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this
+            ->getDoctrine()
+            ->getManager();
 
         $post = $em->getRepository('ProbesysPostBundle:Post')->find($postId);
 
@@ -170,11 +173,35 @@ class PostController extends Controller
 
         if ($form->isValid()) {
 
+            $em = $this->getDoctrine()->getEntityManager();
+
             $now = new \Datetime();
 
             $post->setPostModified($now);
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $postData = $request
+                ->request
+                ->all();
+
+            if (isset($postData['action'])) {
+                $post->setPostStatus($postData['action']);
+            }
+
+            if (isset($postData['postAuthor'])) {
+                $post->postAuthor = $postData['postAuthor'];
+            }
+
+            if (isset($postData['probesys_bundle_postbundle_posttype']['postContent'])) {
+                $postContent = new PostMeta();
+
+                $postContent
+                    ->setPost($post)
+                    ->setMetaKey('postContent')
+                    ->setMetaValue($postData['probesys_bundle_postbundle_posttype']['postContent']);
+
+                $post->addPostMeta($postContent);
+            }
+
             $em->persist($post);
             $em->flush();
 
@@ -272,19 +299,22 @@ class PostController extends Controller
             }
 
             if ($postData['probesys_bundle_postbundle_posttype']['postContent']) {
-                $em
+
+                $postContent = $em
                     ->getRepository('ProbesysPostBundle:PostMeta')
                     ->findOneByPostIdAndByMetaKey($postId, 'postContent');
 
-                $postContent = $em;
+                //die($postContent->getId());
+
+                //$postMeta = new PostMeta($postContent->id);
+
+                    //TODO : check empty and delete
+
+                    $postContent
+                        ->setMetaValue($postData['probesys_bundle_postbundle_posttype']['postContent']);
+
+                    $post->addPostMeta($postContent);
             }
-
-            $postContent
-                ->setPost($post)
-                ->setMetaKey('postContent')
-                ->setMetaValue($postData['postContent']);
-
-            $post->addPostMeta($postContent);
 
             $em->persist($post);
             $em->flush();

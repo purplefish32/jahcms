@@ -50,6 +50,13 @@ class PostType extends AbstractPostType
     private $post;
 
     /**
+     * Post Content
+     *
+     * @var postContent
+     */
+    private $postContent;
+
+    /**
      * Constructor
      *
      * @param \Probesys\Bundle\PostBundle\Entity\Post $post Post
@@ -59,15 +66,16 @@ class PostType extends AbstractPostType
         if ($post) {
             $postMetas = $post->getPostMetas();
 
+            //print_r($post->getPostMetas());
+            //die($postMetas);
+
             if ($postMetas) {
                 foreach ($postMetas as $postMeta) {
                     if ($postMeta->getMetaKey() == 'postContent') {
-                        $post->postContent = $postMeta->getMetaValue();
+                        $this->postContent = $postMeta->getMetaValue();
                     }
                 }
             }
-
-            $this->post = $post;
         }
     }
 
@@ -79,7 +87,7 @@ class PostType extends AbstractPostType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options );
+        parent::buildForm($builder, $options);
 
         $builder
             ->add(
@@ -94,7 +102,8 @@ class PostType extends AbstractPostType
                     'attr' => array(
                         'class' => 'tinymce',
                         'data-theme' => 'simple'
-                    )
+                    ),
+                    'data' => $this->postContent
                 )
             )
         ;
