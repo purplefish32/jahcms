@@ -45,8 +45,18 @@ class PostControllerTest extends WebTestCase
         // // Check data in the show view
         $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
-        // // Edit the entity
-        $crawler = $client->click($crawler->filter('td:contains("Test")')->selectLink('edit')->link());
+        $link = $crawler->filter('a:contains("Test")')->link();
+
+        $crawler = $client->click($link);
+
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
+
+        $this->assertTrue($crawler->filter('h1:contains("Test")')->count() > 0);
+
+        // Edit the entity
+        $crawler = $client->click($crawler->filter('.navbar')->selectLink('Edit')->link());
 
         $this->assertTrue(
             200 === $client->getResponse()->getStatusCode()
