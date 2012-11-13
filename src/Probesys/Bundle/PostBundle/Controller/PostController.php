@@ -211,8 +211,6 @@ class PostController extends Controller
 
         }
 
-        $this->get('session')->setFlash('error', "Post not created");
-
         return array(
             'post' => $post,
             'form' => $form->createView()

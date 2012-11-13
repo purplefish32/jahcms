@@ -67,13 +67,20 @@ class PostControllerTest extends WebTestCase
         );
 
         // Check the element contains an attribute with value equals "Foo"
-        //$this->assertTrue($crawler->filter('[value="Foo"]')->count() > 0);
+        $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
-        // // Delete the entity
-        // $client->submit($crawler->selectButton('Delete')->form());
-        // $crawler = $client->followRedirect();
+        // Delete the entity
+        $crawler = $client->click($crawler->filter('td:contains("Test")')->selectLink('delete')->link());
+        $crawler = $client->followRedirect();
 
-        // // Check the entity has been delete on the list
-        // $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+        // Check the entity has been delete on the list
+        $this->assertNotRegExp('/Test/', $client->getResponse()->getContent());
+
+        // Delete non existing entity
+        $crawler = $client->request('GET', '/admin/post/999999999999/delete');
+
+        $this->assertTrue(
+            404 === $client->getResponse()->getStatusCode()
+        );
     }
 }
