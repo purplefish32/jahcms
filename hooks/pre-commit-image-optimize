@@ -38,6 +38,6 @@ done
 for file in `git diff --cached --name-only | grep ".jpg\$"`
 do
   echo "Crushing $file"
-  jpegtran -copy none -optimize -perfect -outfile $file ${file%.png}.new | grep "filesize"
-  mv -f ${file%.png}.new $file
+  jpegtran -copy none -optimize -perfect -outfile $file ${file%.jpg}.new | grep "filesize"
+  mv -f ${file%.jpg}.new $file
 done
