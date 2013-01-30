@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Probesys\Bundle\ApiBundle\ProbesysApiBundle(),
+            new Probesys\Bundle\MarkItUpBundle\ProbesysMarkItUpBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -5,4 +5,6 @@ $(function() {
     //     $(this).find('button').attr('disabled', 'disabled');
     // });
     //
+    //
+    $(".markItUp").markItUp();
 });

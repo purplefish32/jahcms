@@ -66,9 +66,6 @@ class PostType extends AbstractPostType
         if ($post) {
             $postMetas = $post->getPostMetas();
 
-            //print_r($post->getPostMetas());
-            //die($postMetas);
-
             if ($postMetas) {
                 foreach ($postMetas as $postMeta) {
                     if ($postMeta->getMetaKey() == 'postContent') {
@@ -100,8 +97,7 @@ class PostType extends AbstractPostType
             ->add('postContent', 'textarea', array(
                     "property_path" => false,
                     'attr' => array(
-                        'class' => 'tinymce',
-                        'data-theme' => 'simple'
+                        'class' => 'markItUp'
                     ),
                     'data' => $this->postContent
                 )
