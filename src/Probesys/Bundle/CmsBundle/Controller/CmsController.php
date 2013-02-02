@@ -88,6 +88,13 @@ class CmsController extends Controller
      */
     public function homeAction()
     {
+        $response = new Response();
+        $response->setPublic();
+        $response->setMaxAge(600);
+        $response->setSharedMaxAge(600);
+
+        die('hi');
+
         return array();
     }
 }
