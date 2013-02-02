@@ -20,3 +20,6 @@ web/bundles
 Capfile
 app/config/deploy.rb
 autotest_watchr.rb
+
+#Documentation
+app/doc

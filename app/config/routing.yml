@@ -1,5 +1,5 @@
-ProbesysUserBundle:
-    resource: "@ProbesysUserBundle/Controller/"
+probesys_api:
+    resource: "@ProbesysApiBundle/Controller/"
     type:     annotation
     prefix:   /
 

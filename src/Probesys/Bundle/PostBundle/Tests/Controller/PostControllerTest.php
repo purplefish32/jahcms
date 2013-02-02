@@ -12,41 +12,85 @@ class PostControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        // $crawler = $client->request('GET', '/admin/post/');
-        // $this->assertTrue(200 === $client->getResponse()->getStatusCode());
-        // $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->request('GET', '/admin/posts/');
 
-        // // Fill in the form and submit it
-        // $form = $crawler->selectButton('Create')->form(array(
-        //     'post[field_name]'  => 'Test',
-        //     // ... other fields to fill
-        // ));
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
 
-        // $client->submit($form);
-        // $crawler = $client->followRedirect();
+        $link = $crawler->filter('#post_new')->link();
+
+        $crawler = $client->click($link);
+
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
+
+        // Fill in the form and submit it
+        $form = $crawler
+            ->selectButton('post_submit_action_publish')
+            ->form(
+                array(
+                    'probesys_bundle_postbundle_posttype[postTitle]'   => 'Test',
+                    'probesys_bundle_postbundle_posttype[postContent]' => 'Test',
+                    // ... other fields to fill
+                )
+            )
+        ;
+
+        $client->submit($form);
+
+        $crawler = $client->followRedirect();
 
         // // Check data in the show view
-        // $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
+        $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
-        // // Edit the entity
-        // $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $link = $crawler->filter('a:contains("Test")')->link();
 
-        // $form = $crawler->selectButton('Edit')->form(array(
-        //     'post[field_name]'  => 'Foo',
-        //     // ... other fields to fill
-        // ));
+        $crawler = $client->click($link);
 
-        // $client->submit($form);
-        // $crawler = $client->followRedirect();
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
 
-        // // Check the element contains an attribute with value equals "Foo"
-        // $this->assertTrue($crawler->filter('[value="Foo"]')->count() > 0);
+        $this->assertTrue($crawler->filter('h1:contains("Test")')->count() > 0);
 
-        // // Delete the entity
-        // $client->submit($crawler->selectButton('Delete')->form());
-        // $crawler = $client->followRedirect();
+        // Edit the entity
+        $crawler = $client->click($crawler->filter('.navbar')->selectLink('Edit')->link());
 
-        // // Check the entity has been delete on the list
-        // $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
+
+        $form = $crawler->selectButton('post_submit_action_publish')->form(
+            array(
+                'probesys_bundle_postbundle_posttype[postTitle]' => 'Test2',
+            )
+        );
+
+        $client->submit($form);
+
+        $crawler = $client->followRedirect();
+
+        $this->assertTrue(
+            200 === $client->getResponse()->getStatusCode()
+        );
+
+        // Check the element contains an attribute with value equals "Foo"
+        $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
+
+        // Delete the entity
+        $crawler = $client->click($crawler->filter('td:contains("Test")')->selectLink('delete')->link());
+        $crawler = $client->followRedirect();
+
+        // Check the entity has been delete on the list
+        $this->assertNotRegExp('/Test/', $client->getResponse()->getContent());
+
+        // Delete non existing entity
+        $crawler = $client->request('GET', '/admin/post/999999999999/delete');
+
+        $this->assertTrue(
+            404 === $client->getResponse()->getStatusCode()
+        );
     }
 }

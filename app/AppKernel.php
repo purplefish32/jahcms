@@ -11,7 +11,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
@@ -24,12 +23,14 @@ class AppKernel extends Kernel
             new Probesys\Bundle\CmsBundle\ProbesysCmsBundle(),
             new Probesys\Bundle\CommentBundle\ProbesysCommentBundle(),
             new Probesys\Bundle\TermBundle\ProbesysTermBundle(),
-            new Probesys\Bundle\UserBundle\ProbesysUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Probesys\Bundle\ApiBundle\ProbesysApiBundle(),
+            new Probesys\Bundle\MarkItUpBundle\ProbesysMarkItUpBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

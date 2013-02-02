@@ -1,5 +1,38 @@
 <?php
-
+/**
+ * MIT License
+ * ===========
+ *
+ * Copyright (c) 2012 Donovan Tengblad <contact@donovan-tengblad.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @category   Entity
+ * @package    JahCMS
+ * @subpackage CommentBundle
+ * @author     Donovan Tengblad <contant@donovan-tengblad.com>
+ * @copyright  2012 Donovan Tengblad.
+ * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @version    0.1
+ * @link       http://donovan-tengblad.com
+ */
 namespace Probesys\Bundle\CommentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment
 {
     /**
-     * @var integer $id
+     * @var integer $id ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,70 +55,70 @@ class Comment
     private $id;
 
     /**
-     * @var string $author
+     * @var string $author Author
      *
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
 
     /**
-     * @var string $authorEmail
+     * @var string $authorEmail Author email
      *
      * @ORM\Column(name="authorEmail", type="string", length=100)
      */
     private $authorEmail;
 
     /**
-     * @var string $authorUrl
+     * @var string $authorUrl Author URL
      *
      * @ORM\Column(name="authorUrl", type="string", length=200)
      */
     private $authorUrl;
 
     /**
-     * @var string $authorIp
+     * @var string $authorIp Author IP
      *
      * @ORM\Column(name="authorIp", type="string", length=100)
      */
     private $authorIp;
 
     /**
-     * @var datetime $date
+     * @var datetime $date Date
      *
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
     /**
-     * @var text $content
+     * @var text $content Content
      *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
-     * @var string $approved
+     * @var string $approved Approved
      *
      * @ORM\Column(name="approved", type="string", length=20)
      */
     private $approved;
 
     /**
-     * @var string $agent
+     * @var string $agent Agent
      *
      * @ORM\Column(name="agent", type="string", length=255)
      */
     private $agent;
 
     /**
-     * @var string $type
+     * @var string $type Type
      *
      * @ORM\Column(name="type", type="string", length=20)
      */
     private $type;
 
     /**
-     * @var bigint $parent
+     * @var bigint $parent Parent
      *
      * @ORM\Column(name="parent", type="bigint")
      */
