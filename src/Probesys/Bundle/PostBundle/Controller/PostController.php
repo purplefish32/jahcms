@@ -43,8 +43,6 @@ use Probesys\Bundle\PostBundle\Entity\Post;
 use Probesys\Bundle\PostBundle\Entity\PostMeta;
 use Probesys\Bundle\PostBundle\Form\PostType;
 
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Post controller.
  *
@@ -71,13 +69,6 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $response = new Response();
-        $response->setPublic();
-        $response->setMaxAge(600);
-        $response->setSharedMaxAge(600);
-
-        die('hi');
-
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('ProbesysPostBundle:Post')->findByPostType('post');
