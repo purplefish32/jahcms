@@ -73,8 +73,6 @@ class CmsController extends Controller
         $response->setMaxAge(600);
         $response->setSharedMaxAge(600);
 
-        die('hi');
-
         return array();
     }
 
@@ -92,8 +90,6 @@ class CmsController extends Controller
         $response->setPublic();
         $response->setMaxAge(600);
         $response->setSharedMaxAge(600);
-
-        die('hi');
 
         return array();
     }

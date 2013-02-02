@@ -8,10 +8,10 @@ probesys_api:
 #     type:     annotation
 #     prefix:   /
 
-ProbesysCommentBundle:
-    resource: "@ProbesysCommentBundle/Controller/"
-    type:     annotation
-    prefix:   /
+# ProbesysCommentBundle:
+#     resource: "@ProbesysCommentBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
 
 ProbesysCmsBundle:
     resource: "@ProbesysCmsBundle/Controller/"
