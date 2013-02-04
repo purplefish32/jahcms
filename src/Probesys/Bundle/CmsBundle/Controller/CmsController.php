@@ -87,7 +87,9 @@ class CmsController extends Controller
     public function homeAction()
     {
         $response = new Response();
-        $response->setLastModified('01/01/2010');
+
+        $date = new \DateTime('1970');
+        $response->setLastModified();
         $response->setPublic();
 
         if ($response->isNotModified($this->getRequest())) {
