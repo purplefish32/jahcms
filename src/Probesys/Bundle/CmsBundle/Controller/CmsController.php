@@ -88,13 +88,11 @@ class CmsController extends Controller
     {
         $response = new Response();
 
-        $date = new \DateTime('1970');
-        $response->setLastModified();
+        $date = new \DateTime('2001-01-01');
+        $response->setLastModified($date);
         $response->setPublic();
 
         if ($response->isNotModified($this->getRequest())) {
-            die('hi');
-
             return $response; // this will return the 304 if the cache is OK
         }
 
