@@ -87,9 +87,14 @@ class CmsController extends Controller
     public function homeAction()
     {
         $response = new Response();
+        $response->setLastModified('01/01/2010');
         $response->setPublic();
-        $response->setMaxAge(600);
-        $response->setSharedMaxAge(600);
+
+        if ($response->isNotModified($this->getRequest())) {
+            die('hi');
+
+            return $response; // this will return the 304 if the cache is OK
+        }
 
         return array();
     }
