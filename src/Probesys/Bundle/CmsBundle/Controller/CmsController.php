@@ -88,14 +88,18 @@ class CmsController extends Controller
     {
         $response = new Response();
 
-        $date = new \DateTime('2001-01-01');
+        $date = new \DateTime('2001-01-01');//TODO get lase post date
         $response->setLastModified($date);
         $response->setPublic();
 
         if ($response->isNotModified($this->getRequest())) {
             return $response; // this will return the 304 if the cache is OK
+        } else {
+            return $this->render(
+                'ProbesysCmsBundle:Cms:home.html.twig',
+                array(),
+                $response
+            );
         }
-
-        return array();
     }
 }
